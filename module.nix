@@ -1,13 +1,11 @@
-inputs:
-{
+inputs: {
   config,
   wlib,
   lib,
   pkgs,
   ...
-}:
-{
-  imports = [ wlib.wrapperModules.neovim ];
+}: {
+  imports = [wlib.wrapperModules.neovim];
   # NOTE: see the tips and tricks section or the bottom of this file + flake inputs to understand this value
   options.nvim-lib.neovimPlugins = lib.mkOption {
     readOnly = true;
@@ -47,8 +45,7 @@ inputs:
   config.specs.colorscheme = {
     lazy = true;
     data = builtins.getAttr config.settings.colorscheme (
-      with pkgs.vimPlugins;
-      {
+      with pkgs.vimPlugins; {
         "onedark_dark" = onedarkpro-nvim;
         "onedark_vivid" = onedarkpro-nvim;
         "onedark" = onedarkpro-nvim;
@@ -104,7 +101,7 @@ inputs:
   };
   # You can use the before and after fields to run them before or after other specs or spec of lists of specs
   config.specs.lua = {
-    after = [ "general" ];
+    after = ["general"];
     lazy = true;
     data = with pkgs.vimPlugins; [
       lazydev-nvim
@@ -118,7 +115,7 @@ inputs:
   config.specs.general = {
     # this would ensure any config included from nix in here will be ran after any provided by the `lze` spec
     # If we provided any from within either spec, anyway
-    after = [ "lze" ];
+    after = ["lze"];
     # note we didn't have to specify the `lze` specs name, because it was a top level spec
     extraPackages = with pkgs; [
       lazygit
@@ -142,6 +139,8 @@ inputs:
       nvim-surround
       vim-startuptime
       blink-cmp
+      blink-cmp-copilot
+      copilot-lua
       blink-compat
       cmp-cmdline
       colorful-menu-nvim
@@ -169,37 +168,35 @@ inputs:
   # We could put these in another module and import them here instead!
 
   # This submodule modifies both levels of your specs
-  config.specMods =
-    {
-      # When this module is ran in an inner list,
-      # this will contain `config` of the parent spec
-      parentSpec ? null,
-      # and this will contain `options`
-      # otherwise they will be `null`
-      parentOpts ? null,
-      parentName ? null,
-      # and then config from this one, as normal
-      config,
-      # and the other module arguments.
-      ...
-    }:
-    {
-      # you could use this to change defaults for the specs
-      # config.collateGrammars = lib.mkDefault (parentSpec.collateGrammars or false);
-      # config.autoconfig = lib.mkDefault (parentSpec.autoconfig or false);
-      # config.runtimeDeps = lib.mkDefault (parentSpec.runtimeDeps or false);
-      # config.pluginDeps = lib.mkDefault (parentSpec.pluginDeps or false);
-      # or something more interesting like:
-      # add an extraPackages field to the specs themselves
-      options.extraPackages = lib.mkOption {
-        type = lib.types.listOf wlib.types.stringable;
-        default = [ ];
-        description = "a extraPackages spec field to put packages to suffix to the PATH";
-      };
-      # You could do this too
-      # config.before = lib.mkDefault [ "INIT_MAIN" ];
+  config.specMods = {
+    # When this module is ran in an inner list,
+    # this will contain `config` of the parent spec
+    parentSpec ? null,
+    # and this will contain `options`
+    # otherwise they will be `null`
+    parentOpts ? null,
+    parentName ? null,
+    # and then config from this one, as normal
+    config,
+    # and the other module arguments.
+    ...
+  }: {
+    # you could use this to change defaults for the specs
+    # config.collateGrammars = lib.mkDefault (parentSpec.collateGrammars or false);
+    # config.autoconfig = lib.mkDefault (parentSpec.autoconfig or false);
+    # config.runtimeDeps = lib.mkDefault (parentSpec.runtimeDeps or false);
+    # config.pluginDeps = lib.mkDefault (parentSpec.pluginDeps or false);
+    # or something more interesting like:
+    # add an extraPackages field to the specs themselves
+    options.extraPackages = lib.mkOption {
+      type = lib.types.listOf wlib.types.stringable;
+      default = [];
+      description = "a extraPackages spec field to put packages to suffix to the PATH";
     };
-  config.extraPackages = config.specCollect (acc: v: acc ++ (v.extraPackages or [ ])) [ ];
+    # You could do this too
+    # config.before = lib.mkDefault [ "INIT_MAIN" ];
+  };
+  config.extraPackages = config.specCollect (acc: v: acc ++ (v.extraPackages or [])) [];
 
   # Inform our lua of which top level specs are enabled
   options.settings.cats = lib.mkOption {
@@ -211,17 +208,14 @@ inputs:
   options.nvim-lib.pluginsFromPrefix = lib.mkOption {
     type = lib.types.raw;
     readOnly = true;
-    default =
-      prefix: inputs:
+    default = prefix: inputs:
       lib.pipe inputs [
         builtins.attrNames
         (builtins.filter (s: lib.hasPrefix prefix s))
         (map (
-          input:
-          let
+          input: let
             name = lib.removePrefix prefix input;
-          in
-          {
+          in {
             inherit name;
             value = config.nvim-lib.mkPlugin name inputs.${input};
           }
