@@ -91,6 +91,8 @@ nixInfo.lze.h.lsp.set_ft_fallback(function(name)
   end
 end)
 
+vim.notify = require("notify")
+
 -- NOTE: These 2 should be set up before any plugins with keybinds are loaded.
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '

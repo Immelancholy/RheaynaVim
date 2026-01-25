@@ -134,6 +134,10 @@ inputs: {
         # You can override defaults from the parent spec here
         lazy = false;
       }
+      {
+        data = nvim-notify;
+        lazy = false;
+      }
       snacks-nvim
       noice-nvim
       nvim-lspconfig
