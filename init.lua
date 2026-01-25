@@ -167,6 +167,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd("Copilot enable")
+  end,
+})
+
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 
 -- [[ Highlight on yank ]]
@@ -250,7 +256,7 @@ nixInfo.lze.load {
     -- :lua nixInfo.lze.debug.display(nixInfo.plugins)
     -- The display function is from lzextras
     "onedarkpro.nvim",
-    auto_enable = true, -- <- auto enable is useful here
+    auto_enable = true,
     colorscheme = { "onedark", "onedark_dark", "onedark_vivid", "onelight" },
   },
   {
@@ -726,6 +732,7 @@ nixInfo.lze.load {
   {
     "copilot",
     auto_enable = true,
+    cmd = {"Copilot"},
     event = "InsertEnter",
     after = function (plugin)
         require("copilot").setup({
