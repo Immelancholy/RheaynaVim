@@ -96,7 +96,7 @@ inputs: {
     data = null;
     extraPackages = with pkgs; [
       nixd
-      nixfmt
+      alejandra
     ];
   };
   # You can use the before and after fields to run them before or after other specs or spec of lists of specs
