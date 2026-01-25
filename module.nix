@@ -142,6 +142,10 @@ inputs: {
         data = opencode-nvim;
         lazy = false;
       }
+      {
+        data = harpoon2;
+        lazy = false;
+      }
       snacks-nvim
       noice-nvim
       nvim-lspconfig
