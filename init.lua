@@ -727,7 +727,7 @@ nixInfo.lze.load {
     "copilot",
     auto_enable = true,
     event = "InsertEnter",
-    after = function (_)
+    after = function (plugin)
         require("copilot").setup({
             suggestion = { enabled = false },
             panel = { enabled = false },
