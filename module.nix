@@ -138,6 +138,10 @@ inputs: {
         data = nvim-notify;
         lazy = false;
       }
+      {
+        data = opencode-nvim;
+        lazy = false;
+      }
       snacks-nvim
       noice-nvim
       nvim-lspconfig
