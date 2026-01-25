@@ -706,6 +706,11 @@ nixInfo.lze.load {
         })
     end,
   },
+    {
+        "blink-cmp-copilot",
+        auto_enable = true,
+        on_plugin = { "blink.cmp", "copilot" },
+    },
   {
     "blink.cmp",
     auto_enable = true,
