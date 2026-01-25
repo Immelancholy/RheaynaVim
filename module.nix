@@ -135,6 +135,7 @@ inputs: {
         lazy = false;
       }
       snacks-nvim
+      noice-nvim
       nvim-lspconfig
       nvim-surround
       vim-startuptime

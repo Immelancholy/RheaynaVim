@@ -167,6 +167,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_set_option("clipboard", "unnamedplus")
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -255,6 +257,32 @@ nixInfo.lze.load {
     "vim-moonfly-colors",
     auto_enable = true,
     colorscheme = "moonfly",
+  },
+  {
+    "noice.nvim",
+    auto_enable = true,
+    lazy = false,
+    priority = 1000,
+    after = function(plugin)
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false, -- add a border to hover docs and signature help
+        },
+      })
+    end,
   },
   {
     "snacks.nvim",
@@ -698,7 +726,7 @@ nixInfo.lze.load {
   {
     "copilot",
     auto_enable = true,
-    event = "DeferredUIEnter",
+    event = "InsertEnter",
     after = function (_)
         require("copilot").setup({
             suggestion = { enabled = false },
@@ -706,11 +734,11 @@ nixInfo.lze.load {
         })
     end,
   },
-    {
-        "blink-cmp-copilot",
-        auto_enable = true,
-        on_plugin = { "blink.cmp", "copilot" },
-    },
+  {
+      "blink-cmp-copilot",
+      auto_enable = true,
+      on_plugin = { "blink.cmp", "copilot" },
+  },
   {
     "blink.cmp",
     auto_enable = true,
