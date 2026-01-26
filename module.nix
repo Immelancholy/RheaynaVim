@@ -131,6 +131,10 @@ inputs: {
         data = rustaceanvim;
         lazy = false;
       }
+      {
+        data = lexima-vim;
+        lazy = false;
+      }
       tiny-inline-diagnostic-nvim
       mini-base16
       snacks-nvim
