@@ -310,6 +310,20 @@ vim.keymap.set("n", "<C-S-N>", function()
 	harpoon:list():next()
 end)
 
+local api = vim.api
+local fn = vim.fn
+
+api.nvim_create_augroup("WorkingDirectory", { clear = true })
+api.nvim_create_autocmd({"BufEnter"}, {
+  pattern = {"*.*"}, 
+  callback = function()
+    local path = fn.expand('%:h')..'/'
+    path = "cd "..path
+    api.nvim_command(path)
+  end,
+  group = "WorkingDirectory",
+})
+
 -- NOTE: You will likely want to break this up into more files.
 -- You can call this more than once.
 -- You can also include other files from within the specs via an `import` spec.
@@ -324,7 +338,9 @@ nixInfo.lze.load({
 				workspaces = {
 					{
 						name = "Notes",
-						path = "$NOTES_PATH",
+						path = function()
+							return assert(os.getenv("NOTES_PATH"))
+						end,
 					},
 				},
 			})
