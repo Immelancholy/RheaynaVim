@@ -127,6 +127,10 @@ inputs: {
         data = harpoon2;
         lazy = false;
       }
+      {
+        data = rustaceanvim;
+        lazy = false;
+      }
       mini-base16
       snacks-nvim
       noice-nvim
