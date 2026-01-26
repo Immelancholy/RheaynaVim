@@ -175,8 +175,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
-vim.api.nvim_set_option("clipboard", "unnamedplus")
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -219,7 +217,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- But it constantly clobbers your system clipboard whenever you delete anything.
 -- It syncs clipboard between OS and Neovim.
 --  See `:help 'clipboard'`
--- vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = 'unnamedplus'
 
 -- You should instead use these keybindings so that they are still easy to use, but dont conflict
 vim.keymap.set({"v", "x", "n"}, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank to clipboard' })
