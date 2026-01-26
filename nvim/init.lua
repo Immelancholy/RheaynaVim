@@ -340,6 +340,39 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 	group = "WorkingDirectory",
 })
 
+require("dap").adapters.lldb = {
+	type = "executable",
+	command = "lldb", -- adjust as needed
+	name = "lldb",
+}
+
+local lldb = {
+	name = "Launch lldb",
+	type = "lldb", -- matches the adapter
+	request = "launch", -- could also attach to a currently running process
+	program = function()
+		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+	end,
+	cwd = "${workspaceFolder}",
+	stopOnEntry = false,
+	args = {},
+	runInTerminal = false,
+}
+
+require("dap").configurations.rust = {
+	lldb, -- different debuggers or more configurations can be used here
+}
+local n = "n"
+vim.keymap.set(n, "<leader>cdk", function()
+	require("dap").continue()
+end, { desc = "Dap Continue" })
+vim.keymap.set(n, "<leader>cdl", function()
+	require("dap").run_last()
+end, { desc = "Dap Run Last" })
+vim.keymap.set(n, "<leader>b", function()
+	require("dap").toggle_breakpoint()
+end, { desc = "Dap Toggle Breakpoint" })
+
 -- NOTE: You will likely want to break this up into more files.
 -- You can call this more than once.
 -- You can also include other files from within the specs via an `import` spec.
@@ -350,6 +383,20 @@ nixInfo.lze.load({
 		event = "BufEnter",
 		after = function(plugin)
 			require("otter").setup()
+		end,
+	},
+	{
+		"nvim-dap-ui",
+		event = "VimEnter",
+		after = function(plugin)
+			require("dapui").setup()
+		end,
+	},
+	{
+		"nvim-dap-virtual-text",
+		event = "VimEnter",
+		after = function(plugin)
+			require("nvim-dap-virtual-text").setup()
 		end,
 	},
 	{
@@ -819,6 +866,7 @@ nixInfo.lze.load({
 						words = { "nixInfo%.lze" },
 						path = nixInfo("lzextras", "plugins", "start", "lzextras") .. "/lua",
 					},
+					"nvim-dap-ui",
 				},
 			})
 		end,
