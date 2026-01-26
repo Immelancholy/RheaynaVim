@@ -139,6 +139,7 @@ inputs: {
         data = plenary-nvim;
         lazy = false;
       }
+      better-escape-nvim
       dashboard-nvim
       tiny-inline-diagnostic-nvim
       mini-base16

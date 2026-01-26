@@ -330,6 +330,14 @@ api.nvim_create_autocmd({"BufEnter"}, {
 -- see https://github.com/BirdeeHub/lze?tab=readme-ov-file#structuring-your-plugins
 nixInfo.lze.load({
 	{
+		"better-escape.nvim",
+		event = "VimEnter",
+		after = function(plugin)
+			require("better_escape").setup()
+		end,
+			
+	},
+	{
 		"obsidian.nvim",
 		ft = "markdown",
 		after = function(plugin)
