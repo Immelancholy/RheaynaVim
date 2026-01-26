@@ -268,6 +268,15 @@ vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 -- see https://github.com/BirdeeHub/lze?tab=readme-ov-file#structuring-your-plugins
 nixInfo.lze.load {
   {
+    "tiny-inline-diagnostic.nvim",
+    auto_enable = true,
+    event = "VimEnter",
+    after = function(plugin)
+      require("tiny-inline-diagnostic").setup()
+      vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+    end,
+  },
+  {
     "mini.base16",
     auto_enable = true,
     after = function(plugin)
@@ -714,6 +723,8 @@ nixInfo.lze.load {
           -- python = { "isort", "black" },
           -- Use a sub-list to run only the first available formatter
           -- javascript = { { "prettierd", "prettier" } },
+          nix = { "alejandra" },
+          rust = { "rustfmt" },
         },
       })
 
@@ -724,6 +735,13 @@ nixInfo.lze.load {
           timeout_ms = 1000,
         })
       end, { desc = "[F]ormat [F]ile" })
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*",
+        callback = function(args)
+          require("conform").format({ bufnr = args.buf })
+        end,
+      })
     end,
   },
   {
@@ -741,6 +759,8 @@ nixInfo.lze.load {
         -- markdown = {'vale',},
         -- javascript = { 'eslint' },
         -- typescript = { 'eslint' },
+        nix = { 'nix' },
+        rust = { 'clippy' },
       }
 
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {

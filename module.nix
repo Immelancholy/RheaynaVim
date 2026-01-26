@@ -131,6 +131,7 @@ inputs: {
         data = rustaceanvim;
         lazy = false;
       }
+      tiny-inline-diagnostic-nvim
       mini-base16
       snacks-nvim
       noice-nvim
