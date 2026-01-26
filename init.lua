@@ -103,6 +103,7 @@ vim.g.maplocalleader = " "
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+vim.o.conceallevel = 2
 -- allow .nvim.lua in current dir and parents (project config)
 vim.o.exrc = false -- can be toggled off in that file to stop it from searching further
 
@@ -315,6 +316,21 @@ end)
 -- see https://github.com/BirdeeHub/lze?tab=readme-ov-file#structuring-your-plugins
 nixInfo.lze.load({
 	{
+		"obsidian.nvim",
+		ft = "markdown",
+		after = function(plugin)
+			require("obsidian").setup({
+				legacy_commands = false,
+				workspaces = {
+					{
+						name = "Notes",
+						path = "$NOTES_PATH",
+					},
+				},
+			})
+		end,
+	},
+	{
 		"tiny-inline-diagnostic.nvim",
 		auto_enable = true,
 		event = "VimEnter",
@@ -397,6 +413,107 @@ nixInfo.lze.load({
 			-- I also like this color
 			vim.api.nvim_set_hl(0, "MySnacksIndent", { fg = "#32a88f" })
 			require("snacks").setup({
+				dashboard = {
+					enabled = true,
+					width = 60,
+					row = nil, -- dashboard position. nil for center
+					col = nil, -- dashboard position. nil for center
+					pane_gap = 4, -- empty columns between vertical panes
+					autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
+					-- These settings are used by some built-in sections
+					preset = {
+						-- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
+						---@type fun(cmd:string, opts:table)|nil
+						pick = nil,
+						-- Used by the `keys` section to show keymaps.
+						-- Set your custom keymaps here.
+						-- When using a function, the `items` argument are the default keymaps.
+						---@type snacks.dashboard.Item[]
+						keys = {
+							{
+								icon = " ",
+								key = "f",
+								desc = "Find File",
+								action = ":lua Snacks.dashboard.pick('files')",
+							},
+							{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+							{
+								icon = " ",
+								key = "g",
+								desc = "Find Text",
+								action = ":lua Snacks.dashboard.pick('live_grep')",
+							},
+							{
+								icon = " ",
+								key = "r",
+								desc = "Recent Files",
+								action = ":lua Snacks.dashboard.pick('oldfiles')",
+							},
+							{
+								icon = " ",
+								key = "o",
+								desc = "Notes",
+								action = ":lua Snacks.dashboard.pick('files', {cwd = os.getenv('NOTES_PATH')})",
+							},
+							{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+							{
+								icon = "󰒲 ",
+								key = "L",
+								desc = "Lazy",
+								action = ":Lazy",
+								enabled = package.loaded.lazy ~= nil,
+							},
+							{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+						},
+						-- Used by the `header` section
+						header = [[
+⢰⡟⣡⡟⣱⣿⡿⠡⢛⣋⣥⣴⣌⢿⣿⣿⣿⣿⣷⣌⠻⢿⣿⣿⣿⣿⣿⣿
+⠏⢼⡿⣰⡿⠿⠡⠿⠿⢯⣉⠿⣿⣿⣿⣿⣿⣿⣷⣶⣿⣦⣍⠻⢿⣿⣿⣿
+⣼⣷⢠⠀⠀⢠⣴⡖⠀⠀⠈⠻⣿⡿⣿⣿⣿⣿⣿⣛⣯⣝⣻⣿⣶⣿⣿⣿
+⣿⡇⣿⡷⠂⠈⡉⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣍⡤⣤⣤⣤⡀⠀⠉⠛⠿
+⣿⢸⣿⡅⣠⣬⣥⣤⣴⣴⣿⣿⢿⣿⣿⣿⣿⣿⣟⡭⡄⣀⣉⡀⠀⠀⠀⠀
+⡟⣿⣿⢰⣿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣶⣦⣈⠀⠀⠀⢀⣶
+⡧⣿⡇⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣾⣿
+⡇⣿⠃⣿⣿⣿⣿⣿⠛⠛⢫⣿⣿⣻⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿
+⡇⣿⠘⡇⢻⣿⣿⣿⡆⠀⠀⠀⠀⠈⠉⠙⠻⠏⠛⠻⣿⣿⣿⣿⣿⣭⡾⢁
+⡇⣿⠀⠘⢿⣿⣿⣿⣧⢠⣤⠀⡤⢀⣠⣀⣀⠀⠀⣼⣿⣿⣿⣿⣿⠟⣁⠉
+⣧⢻⠀⡄⠀⠹⣿⣿⣿⡸⣿⣾⡆⣿⣿⣿⠿⣡⣾⣿⣿⣿⣿⡿⠋⠐⢡⣶
+⣿⡘⠈⣷⠀⠀⠈⠻⣿⣷⣎⠐⠿⢟⣋⣤⣾⣿⣿⣿⡿⠟⣩⠖⢠⡬⠈⠀
+⣿⣧⠁⢻⡇⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⠿⠟⠋⠁⢀⠈⢀⡴⠈⠁⠀⠀
+⠻⣿⣆⠘⣿⠀⠀  ⠀⠈⠙⠛⠋⠉⠀⠀⠀⠀⡀⠤⠚⠁     
+						]],
+					},
+					-- item field formatters
+					formats = {
+						icon = function(item)
+							if item.file and item.icon == "file" or item.icon == "directory" then
+								return Snacks.dashboard.icon(item.file, item.icon)
+							end
+							return { item.icon, width = 2, hl = "icon" }
+						end,
+						footer = { "%s", align = "center" },
+						header = { "%s", align = "center" },
+						file = function(item, ctx)
+							local fname = vim.fn.fnamemodify(item.file, ":~")
+							fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
+							if #fname > ctx.width then
+								local dir = vim.fn.fnamemodify(fname, ":h")
+								local file = vim.fn.fnamemodify(fname, ":t")
+								if dir and file then
+									file = file:sub(-(ctx.width - #dir - 2))
+									fname = dir .. "/…" .. file
+								end
+							end
+							local dir, file = fname:match("^(.*)/(.+)$")
+							return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } }
+								or { { fname, hl = "file" } }
+						end,
+					},
+					sections = {
+						{ section = "header" },
+						{ section = "keys", gap = 1, padding = 1 },
+					},
+				},
 				explorer = { replace_netrw = true },
 				picker = {
 					sources = {

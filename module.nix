@@ -135,6 +135,11 @@ inputs: {
         data = lexima-vim;
         lazy = false;
       }
+      {
+        data = plenary-nvim;
+        lazy = false;
+      }
+      dashboard-nvim
       tiny-inline-diagnostic-nvim
       mini-base16
       snacks-nvim
@@ -154,6 +159,7 @@ inputs: {
       fidget-nvim
       nvim-lint
       conform-nvim
+      obsidian-nvim
       nvim-treesitter-textobjects
       # treesitter + grammars
       nvim-treesitter.withAllGrammars
