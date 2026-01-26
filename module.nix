@@ -16,7 +16,7 @@ inputs: {
   };
 
   # choose a directory for your config.
-  config.settings.config_directory = ./.;
+  config.settings.config_directory = ./nvim/.;
   # you can also use an impure path!
   # config.settings.config_directory = lib.generators.mkLuaInline "vim.fn.stdpath('config')";
   # config.settings.config_directory = "/home/<USER>/.config/nvim";
