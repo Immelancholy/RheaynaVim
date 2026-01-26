@@ -340,13 +340,6 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 	group = "WorkingDirectory",
 })
 
-api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-})
-
 -- NOTE: You will likely want to break this up into more files.
 -- You can call this more than once.
 -- You can also include other files from within the specs via an `import` spec.
