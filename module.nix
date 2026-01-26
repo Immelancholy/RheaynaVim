@@ -47,6 +47,11 @@ inputs: {
     settings = "can also accept freeform values";
   };
 
+  config.env = {
+    CODELLDB_PATH = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
+    LIBLLDB_PATH = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb.so";
+  };
+
   # If the defaults are fine, you can just provide the `.data` field
   # In this case, a list of specs, instead of a single plugin like above
   config.specs.lze = [
@@ -110,7 +115,7 @@ inputs: {
     extraPackages = with pkgs; [
       lazygit
       tree-sitter
-      lldb
+      pkgs.vscode-extensions.vadimcn.vscode-lldb
     ];
     # this `lazy = true` definition will transfer to specs in the contained DAL, if there is one.
     # This is because the definition of lazy in `config.specMods` checks `parentSpec.lazy or false`

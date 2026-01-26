@@ -340,28 +340,6 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 	group = "WorkingDirectory",
 })
 
-require("dap").adapters.lldb = {
-	type = "executable",
-	command = "lldb", -- adjust as needed
-	name = "lldb",
-}
-
-local lldb = {
-	name = "Launch lldb",
-	type = "lldb", -- matches the adapter
-	request = "launch", -- could also attach to a currently running process
-	program = function()
-		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-	end,
-	cwd = "${workspaceFolder}",
-	stopOnEntry = false,
-	args = {},
-	runInTerminal = false,
-}
-
-require("dap").configurations.rust = {
-	lldb, -- different debuggers or more configurations can be used here
-}
 local n = "n"
 vim.keymap.set(n, "<leader>cdk", function()
 	require("dap").continue()
@@ -372,6 +350,59 @@ end, { desc = "Dap Run Last" })
 vim.keymap.set(n, "<leader>b", function()
 	require("dap").toggle_breakpoint()
 end, { desc = "Dap Toggle Breakpoint" })
+
+vim.fn.sign_define("DapBreakpoint", { text = "🔴" })
+
+local dap = require("dap")
+
+dap.adapters = {
+	codelldb = {
+
+		type = "server",
+		port = "${port}",
+		executable = {
+			command = vim.env.CODELLDB_PATH,
+			args = { "--port", "${port}" },
+		},
+	},
+}
+
+dap.configurations = {
+	rust = {
+		{
+			name = "Launch",
+			type = "codelldb",
+			request = "launch",
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+			end,
+			cwd = "${workspaceFolder}",
+			stopOnEntry = false,
+		},
+	},
+	cpp = {
+		{
+			name = "Launch",
+			type = "codelldb",
+			request = "launch",
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+			end,
+			cwd = "${workspaceFolder}",
+		},
+	},
+	c = {
+		{
+			name = "Launch",
+			type = "codelldb",
+			request = "launch",
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+			end,
+			cwd = "${workspaceFolder}",
+		},
+	},
+}
 
 -- NOTE: You will likely want to break this up into more files.
 -- You can call this more than once.
@@ -388,8 +419,11 @@ nixInfo.lze.load({
 	{
 		"nvim-dap-ui",
 		event = "VimEnter",
-		after = function(plugin)
+		after = function()
 			require("dapui").setup()
+			vim.keymap.set("n", "<leader>cdu", function()
+				require("dapui").toggle()
+			end, { desc = "Dap UI Toggle" })
 		end,
 	},
 	{
