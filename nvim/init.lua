@@ -284,44 +284,67 @@ harpoon:setup()
 
 vim.keymap.set("n", "<leader>a", function()
 	harpoon:list():add()
-end)
+end, { desc = "Harpoon Add" })
 vim.keymap.set("n", "<C-e>", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
+end, { desc = "Harpoon List" })
 
 vim.keymap.set("n", "<C-h>", function()
 	harpoon:list():select(1)
-end)
+end, { desc = "Harpoon Select 1" })
 vim.keymap.set("n", "<C-t>", function()
 	harpoon:list():select(2)
-end)
+end, { desc = "Harpoon Select 2" })
 vim.keymap.set("n", "<C-n>", function()
 	harpoon:list():select(3)
-end)
+end, { desc = "Harpoon Select 3" })
 vim.keymap.set("n", "<C-s>", function()
 	harpoon:list():select(4)
-end)
+end, { desc = "Harpoon Select 4" })
 
 -- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<C-S-P>", function()
 	harpoon:list():prev()
-end)
+end, { desc = "Harpoon List Prev" })
 vim.keymap.set("n", "<C-S-N>", function()
 	harpoon:list():next()
-end)
+end, { desc = "Harpoon List Next" })
+
+vim.keymap.set({ "n", "x", "o" }, "s", function()
+	require("flash").jump()
+end, { desc = "Flash" })
+vim.keymap.set({ "n", "x", "o" }, "S", function()
+	require("flash").treesitter()
+end, { desc = "Flash Treesitter" })
+vim.keymap.set("o", "r", function()
+	require("flash").remote()
+end, { desc = "Remote Flash" })
+vim.keymap.set({ "x", "o" }, "R", function()
+	require("flash").treesitter_search()
+end, { desc = "Treesitter Search" })
+vim.keymap.set("c", "<C-s>", function()
+	require("flash").toggle()
+end, { desc = "Toggle Flash Search" })
 
 local api = vim.api
 local fn = vim.fn
 
 api.nvim_create_augroup("WorkingDirectory", { clear = true })
-api.nvim_create_autocmd({"BufEnter"}, {
-  pattern = {"*.*"}, 
-  callback = function()
-    local path = fn.expand('%:h')..'/'
-    path = "cd "..path
-    api.nvim_command(path)
-  end,
-  group = "WorkingDirectory",
+api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = { "*.*" },
+	callback = function()
+		local path = fn.expand("%:h") .. "/"
+		path = "cd " .. path
+		api.nvim_command(path)
+	end,
+	group = "WorkingDirectory",
+})
+
+api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
 })
 
 -- NOTE: You will likely want to break this up into more files.
@@ -329,6 +352,13 @@ api.nvim_create_autocmd({"BufEnter"}, {
 -- You can also include other files from within the specs via an `import` spec.
 -- see https://github.com/BirdeeHub/lze?tab=readme-ov-file#structuring-your-plugins
 nixInfo.lze.load({
+	{
+		"otter.nvim",
+		event = "BufEnter",
+		after = function(plugin)
+			require("otter").setup()
+		end,
+	},
 	{
 		"mini.icons",
 		event = "VimEnter",
@@ -824,7 +854,7 @@ nixInfo.lze.load({
 					},
 					options = {},
 					formatting = {
-						command = { "nixfmt" },
+						command = { "alejandra" },
 					},
 					diagnostic = {
 						suppress = {
@@ -833,6 +863,13 @@ nixInfo.lze.load({
 					},
 				},
 			},
+		},
+	},
+	{
+		"bashls",
+		for_cat = "bash",
+		lsp = {
+			filetypes = { "sh", "bash", "zsh" },
 		},
 	},
 	{
@@ -977,6 +1014,8 @@ nixInfo.lze.load({
 					-- python = { "isort", "black" },
 					-- Use a sub-list to run only the first available formatter
 					-- javascript = { { "prettierd", "prettier" } },
+					sh = { "shfmt" },
+					bash = { "shfmt" },
 					nix = { "alejandra" },
 					rust = { "rustfmt" },
 				},
@@ -989,13 +1028,6 @@ nixInfo.lze.load({
 					timeout_ms = 1000,
 				})
 			end, { desc = "[F]ormat [F]ile" })
-
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				pattern = "*",
-				callback = function(args)
-					require("conform").format({ bufnr = args.buf })
-				end,
-			})
 		end,
 	},
 	{
@@ -1013,6 +1045,7 @@ nixInfo.lze.load({
 				-- markdown = {'vale',},
 				-- javascript = { 'eslint' },
 				-- typescript = { 'eslint' },
+				bash = { "shellcheck" },
 				nix = { "nix" },
 				rust = { "clippy" },
 			}
@@ -1372,6 +1405,13 @@ nixInfo.lze.load({
 				{ "<leader>w", group = "[w]orkspace" },
 				{ "<leader>w_", hidden = true },
 			})
+		end,
+	},
+	{
+		"flash.nvim",
+		event = "VimEnter",
+		after = function(plugin)
+			require("flash").setup({})
 		end,
 	},
 })

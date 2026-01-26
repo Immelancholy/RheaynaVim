@@ -80,6 +80,15 @@ inputs: {
       alejandra
     ];
   };
+
+  config.specs.bash = {
+    data = null;
+    extraPackages = with pkgs; [
+      bash-language-server
+      shfmt
+      shellcheck
+    ];
+  };
   # You can use the before and after fields to run them before or after other specs or spec of lists of specs
   config.specs.lua = {
     after = ["general"];
@@ -139,6 +148,8 @@ inputs: {
         data = plenary-nvim;
         lazy = false;
       }
+      flash-nvim
+      otter-nvim
       mini-icons
       better-escape-nvim
       dashboard-nvim
