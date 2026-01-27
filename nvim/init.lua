@@ -408,12 +408,14 @@ end, { desc = "Dap UI Toggle" })
 vim.fn.sign_define("DapBreakpoint", { text = "🔴" })
 
 local otter = require("otter")
---- Activate the current buffer by adding and synchronizing
----@param languages table|nil List of languages to activate. If nil, all available languages will be activated.
----@param completion boolean|nil Enable completion for otter buffers. Default: true
----@param diagnostics boolean|nil Enable diagnostics for otter buffers. Default: true
----@param tsquery string|nil Explicitly provide a treesitter query. If nil, the injections query for the current filetyepe will be used. See :h treesitter-language-injections.
-otter.activate(languages, completion, diagnostics, tsquery)
+otter.setup()
+api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = { "*.*" },
+	callback = function()
+		otter.activate()
+	end,
+	group = "WorkingDirectory",
+})
 
 -- NOTE: You will likely want to break this up into more files.
 -- You can call this more than once.
