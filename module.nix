@@ -79,6 +79,13 @@ inputs: {
     }
   ];
 
+  config.specs.hypr = {
+    data = null;
+    extraPackages = with pkgs; [
+      hyprls
+    ];
+  };
+
   # you can name these whatever you want.
   config.specs.nix = {
     data = null;

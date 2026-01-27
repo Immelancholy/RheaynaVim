@@ -87,4 +87,5 @@ return {
 	{ import = "plugins.lsp.lua_ls" },
 	{ import = "plugins.lsp.nixd" },
 	{ import = "plugins.lsp.bashls" },
+	{ import = "plugins.lsp.hypr" },
 }
