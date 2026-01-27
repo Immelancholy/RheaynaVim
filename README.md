@@ -7,4 +7,6 @@ It uses the Nix Wrapper Modules neovim template:
 You can run this configuration with:
 ```Bash
 nix run github:Immelancholy/RheaynaVim#default
+
+![ss1](https://raw.githubusercontent.com/Immelancholy/RheaynaVim/refs/heads/main/.screenshots/ss1.png)
 ```
