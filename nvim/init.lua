@@ -423,6 +423,13 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 -- see https://github.com/BirdeeHub/lze?tab=readme-ov-file#structuring-your-plugins
 nixInfo.lze.load({
 	{
+		"indent-blankline.nvim",
+		event = "VimEnter",
+		after = function(plugin)
+			require("ibl").setup()
+		end,
+	},
+	{
 		"nvim-dap-virtual-text",
 		event = "VimEnter",
 		after = function(plugin)

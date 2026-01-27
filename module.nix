@@ -171,6 +171,7 @@ inputs: {
         data = otter-nvim;
         lazy = false;
       }
+      indent-blankline-nvim
       nvim-dap-virtual-text
       flash-nvim
       mini-icons
