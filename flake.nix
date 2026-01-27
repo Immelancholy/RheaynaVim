@@ -8,48 +8,47 @@
     url = "github:BirdeeHub/lze";
     flake = false;
   };
-  inputs = {
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-  };
   # These 2 are already in nixpkgs, however this ensures you always fetch the most up to date version!
   inputs.plugins-lzextras = {
     url = "github:BirdeeHub/lzextras";
     flake = false;
   };
-  outputs =
-    {
-      self,
-      nixpkgs,
-      wrappers,
-      ...
-    }@inputs:
-    let
-      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
-      module = nixpkgs.lib.modules.importApply ./module.nix inputs;
-      wrapper = wrappers.lib.evalModule module;
-    in
-    {
-      overlays = {
-        default = final: prev: { neovim = wrapper.config.wrap { pkgs = final; }; };
-        neovim = self.overlays.default;
-      };
-      wrapperModules = {
-        default = module;
-        neovim = self.wrapperModules.default;
-      };
-      wrappers = {
-        default = wrapper.config;
-        neovim = self.wrappers.default;
-      };
-      packages = forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs { inherit system; };
-        in
-        {
-          default = wrapper.config.wrap { inherit pkgs; };
-          neovim = self.packages.${system}.default;
-        }
-      );
+  inputs = {
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    opencode.url = "github:anomalyco/opencode";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+  };
+  outputs = {
+    self,
+    nixpkgs,
+    wrappers,
+    rust-overlay,
+    ...
+  } @ inputs: let
+    forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
+    module = nixpkgs.lib.modules.importApply ./module.nix inputs;
+    wrapper = wrappers.lib.evalModule module;
+  in {
+    overlays = {
+      default = final: prev: {neovim = wrapper.config.wrap {pkgs = final;};};
+      neovim = self.overlays.default;
     };
+    wrapperModules = {
+      default = module;
+      neovim = self.wrapperModules.default;
+    };
+    wrappers = {
+      default = wrapper.config;
+      neovim = self.wrappers.default;
+    };
+    packages = forAllSystems (
+      system: let
+        overlays = [(import rust-overlay)];
+        pkgs = import nixpkgs {inherit system overlays;};
+      in {
+        default = wrapper.config.wrap {inherit pkgs;};
+        neovim = self.packages.${system}.default;
+      }
+    );
+  };
 }

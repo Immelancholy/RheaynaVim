@@ -18,6 +18,7 @@ inputs: {
   # choose a directory for your config.
   config.settings.config_directory = ./nvim/.;
   config.package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+
   # you can also use an impure path!
   # config.settings.config_directory = lib.generators.mkLuaInline "vim.fn.stdpath('config')";
   # config.settings.config_directory = "/home/<USER>/.config/nvim";
@@ -95,6 +96,13 @@ inputs: {
       shellcheck
     ];
   };
+
+  config.specs.rust = {
+    data = null;
+    extraPackages = with pkgs; [
+      (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {extensions = ["rust-src" "rust-analyzer"];}))
+    ];
+  };
   # You can use the before and after fields to run them before or after other specs or spec of lists of specs
   config.specs.lua = {
     after = ["general"];
@@ -117,6 +125,7 @@ inputs: {
       lazygit
       tree-sitter
       pkgs.vscode-extensions.vadimcn.vscode-lldb
+      inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
     # this `lazy = true` definition will transfer to specs in the contained DAL, if there is one.
     # This is because the definition of lazy in `config.specMods` checks `parentSpec.lazy or false`
