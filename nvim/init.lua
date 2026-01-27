@@ -340,19 +340,7 @@ api.nvim_create_autocmd({ "BufEnter" }, {
 	group = "WorkingDirectory",
 })
 
-local n = "n"
-vim.keymap.set(n, "<leader>cdk", function()
-	require("dap").continue()
-end, { desc = "Dap Continue" })
-vim.keymap.set(n, "<leader>cdl", function()
-	require("dap").run_last()
-end, { desc = "Dap Run Last" })
-vim.keymap.set(n, "<leader>b", function()
-	require("dap").toggle_breakpoint()
-end, { desc = "Dap Toggle Breakpoint" })
-
-vim.fn.sign_define("DapBreakpoint", { text = "🔴" })
-
+local dapui = require("dapui")
 local dap = require("dap")
 
 dap.adapters = {
@@ -404,6 +392,21 @@ dap.configurations = {
 	},
 }
 
+vim.keymap.set("n", "<leader>cdk", function()
+	dap.continue()
+end, { desc = "Dap Continue" })
+vim.keymap.set("n", "<leader>cdl", function()
+	dap.run_last()
+end, { desc = "Dap Run Last" })
+vim.keymap.set("n", "<leader>b", function()
+	dap.toggle_breakpoint()
+end, { desc = "Dap Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>cdu", function()
+	dapui.toggle()
+end, { desc = "Dap UI Toggle" })
+
+vim.fn.sign_define("DapBreakpoint", { text = "🔴" })
+
 -- NOTE: You will likely want to break this up into more files.
 -- You can call this more than once.
 -- You can also include other files from within the specs via an `import` spec.
@@ -414,16 +417,6 @@ nixInfo.lze.load({
 		event = "BufEnter",
 		after = function(plugin)
 			require("otter").setup()
-		end,
-	},
-	{
-		"nvim-dap-ui",
-		event = "VimEnter",
-		after = function()
-			require("dapui").setup()
-			vim.keymap.set("n", "<leader>cdu", function()
-				require("dapui").toggle()
-			end, { desc = "Dap UI Toggle" })
 		end,
 	},
 	{

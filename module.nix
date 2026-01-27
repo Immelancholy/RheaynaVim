@@ -159,10 +159,14 @@ inputs: {
         lazy = false;
       }
       {
-        data = nvim-dap-virtual-text;
+        data = nvim-dap-ui;
         lazy = false;
       }
-      nvim-dap-ui
+      {
+        data = vim-be-good;
+        lazy = false;
+      }
+      nvim-dap-virtual-text
       flash-nvim
       otter-nvim
       mini-icons
