@@ -8,6 +8,9 @@
     url = "github:BirdeeHub/lze";
     flake = false;
   };
+  inputs = {
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+  };
   # These 2 are already in nixpkgs, however this ensures you always fetch the most up to date version!
   inputs.plugins-lzextras = {
     url = "github:BirdeeHub/lzextras";

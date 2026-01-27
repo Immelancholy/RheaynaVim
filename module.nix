@@ -17,6 +17,7 @@ inputs: {
 
   # choose a directory for your config.
   config.settings.config_directory = ./nvim/.;
+  config.package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
   # you can also use an impure path!
   # config.settings.config_directory = lib.generators.mkLuaInline "vim.fn.stdpath('config')";
   # config.settings.config_directory = "/home/<USER>/.config/nvim";
