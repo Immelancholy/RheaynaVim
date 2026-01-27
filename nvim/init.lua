@@ -407,18 +407,19 @@ end, { desc = "Dap UI Toggle" })
 
 vim.fn.sign_define("DapBreakpoint", { text = "🔴" })
 
+local otter = require("otter")
+--- Activate the current buffer by adding and synchronizing
+---@param languages table|nil List of languages to activate. If nil, all available languages will be activated.
+---@param completion boolean|nil Enable completion for otter buffers. Default: true
+---@param diagnostics boolean|nil Enable diagnostics for otter buffers. Default: true
+---@param tsquery string|nil Explicitly provide a treesitter query. If nil, the injections query for the current filetyepe will be used. See :h treesitter-language-injections.
+otter.activate(languages, completion, diagnostics, tsquery)
+
 -- NOTE: You will likely want to break this up into more files.
 -- You can call this more than once.
 -- You can also include other files from within the specs via an `import` spec.
 -- see https://github.com/BirdeeHub/lze?tab=readme-ov-file#structuring-your-plugins
 nixInfo.lze.load({
-	{
-		"otter.nvim",
-		event = "BufEnter",
-		after = function(plugin)
-			require("otter").setup()
-		end,
-	},
 	{
 		"nvim-dap-virtual-text",
 		event = "VimEnter",

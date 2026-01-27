@@ -166,9 +166,12 @@ inputs: {
         data = vim-be-good;
         lazy = false;
       }
+      {
+        data = otter-nvim;
+        lazy = false;
+      }
       nvim-dap-virtual-text
       flash-nvim
-      otter-nvim
       mini-icons
       better-escape-nvim
       dashboard-nvim
