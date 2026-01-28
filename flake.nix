@@ -17,6 +17,10 @@
     url = "github:XXiaoA/atone.nvim";
     flake = false;
   };
+  inputs.plugins-conflict-marker = {
+    url = "github:tronikelis/conflict-marker.nvim";
+    flake = false;
+  };
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     opencode.url = "github:anomalyco/opencode";

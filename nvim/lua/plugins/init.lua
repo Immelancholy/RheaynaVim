@@ -34,6 +34,7 @@ return {
 	-- Git
 	{ import = "plugins.gitsigns" },
 	{ import = "plugins.gitblame" },
+	{ import = "plugins.conflict-marker" },
 
 	-- Debugging
 	{ import = "plugins.dap" },

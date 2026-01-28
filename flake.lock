@@ -155,6 +155,22 @@
         "type": "github"
       }
     },
+    "plugins-conflict-marker": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767956543,
+        "narHash": "sha256-stIJpOEmsmjA4uuYaf41sc03gJlGSte7hr6bf52uvVI=",
+        "owner": "tronikelis",
+        "repo": "conflict-marker.nvim",
+        "rev": "42fedfdfaad7163570366744f3ed202cedc6e70e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tronikelis",
+        "repo": "conflict-marker.nvim",
+        "type": "github"
+      }
+    },
     "plugins-lze": {
       "flake": false,
       "locked": {
@@ -193,6 +209,7 @@
         "nixpkgs": "nixpkgs_2",
         "opencode": "opencode",
         "plugins-atone": "plugins-atone",
+        "plugins-conflict-marker": "plugins-conflict-marker",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
         "rust-overlay": "rust-overlay",
