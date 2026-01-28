@@ -13,6 +13,10 @@
     url = "github:BirdeeHub/lzextras";
     flake = false;
   };
+  inputs.plugins-atone = {
+    url = "github:XXiaoA/atone.nvim";
+    flake = false;
+  };
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     opencode.url = "github:anomalyco/opencode";

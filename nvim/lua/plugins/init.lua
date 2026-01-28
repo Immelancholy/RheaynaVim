@@ -42,4 +42,5 @@ return {
 	{ import = "plugins.otter" },
 	{ import = "plugins.opencode" },
 	{ import = "plugins.startuptime" },
+	{ import = "plugins.atone" },
 }

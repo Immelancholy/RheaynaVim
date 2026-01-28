@@ -79,6 +79,10 @@ inputs: {
     }
   ];
 
+  config.specs.atone = [
+    config.nvim-lib.neovimPlugins.atone
+  ];
+
   config.specs.hypr = {
     data = null;
     extraPackages = with pkgs; [

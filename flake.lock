@@ -139,6 +139,22 @@
         "type": "github"
       }
     },
+    "plugins-atone": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763096453,
+        "narHash": "sha256-1/scPTclNcXOKCVjAuve/wV88zIKIWeb5ul3Jb/9+xg=",
+        "owner": "XXiaoA",
+        "repo": "atone.nvim",
+        "rev": "d1c1f08bfe23ac56536d0091c8a398938ee9db4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "XXiaoA",
+        "repo": "atone.nvim",
+        "type": "github"
+      }
+    },
     "plugins-lze": {
       "flake": false,
       "locked": {
@@ -176,6 +192,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "opencode": "opencode",
+        "plugins-atone": "plugins-atone",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
         "rust-overlay": "rust-overlay",
