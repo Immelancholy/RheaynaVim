@@ -10,3 +10,5 @@ nix run github:Immelancholy/RheaynaVim#default
 ```
 
 ![ss1](https://raw.githubusercontent.com/Immelancholy/RheaynaVim/refs/heads/main/.screenshots/ss1.png)
+
+![ss2](https://raw.githubusercontent.com/Immelancholy/RheaynaVim/refs/heads/main/.screenshots/ss2.png)
