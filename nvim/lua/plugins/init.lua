@@ -33,6 +33,7 @@ return {
 
 	-- Git
 	{ import = "plugins.gitsigns" },
+	{ import = "plugins.gitblame" },
 
 	-- Debugging
 	{ import = "plugins.dap" },
