@@ -27,14 +27,3 @@ api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
--- Auto change working directory
-api.nvim_create_augroup("WorkingDirectory", { clear = true })
-api.nvim_create_autocmd({ "BufEnter" }, {
-	pattern = { "*.*" },
-	callback = function()
-		local path = vim.fn.expand("%:h") .. "/"
-		path = "cd " .. path
-		api.nvim_command(path)
-	end,
-	group = "WorkingDirectory",
-})
