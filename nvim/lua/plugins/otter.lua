@@ -6,12 +6,13 @@ return {
 		local otter = require("otter")
 		otter.setup()
 
+		local group = vim.api.nvim_create_augroup("OtterWorkingDirectory", { clear = true })
 		vim.api.nvim_create_autocmd({ "BufEnter" }, {
 			pattern = { "*.*" },
 			callback = function()
 				otter.activate()
 			end,
-			group = "WorkingDirectory",
+			group = group,
 		})
 	end,
 }
