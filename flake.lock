@@ -171,6 +171,22 @@
         "type": "github"
       }
     },
+    "plugins-copilot-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769603846,
+        "narHash": "sha256-nvGt/u4K5iYi7AZegV/tpOjFNlye7+LYPMejuuIwJ0M=",
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "rev": "9b8d77c6c847c83c784c05f5f86b4821ed90d3a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "type": "github"
+      }
+    },
     "plugins-lze": {
       "flake": false,
       "locked": {
@@ -210,6 +226,7 @@
         "opencode": "opencode",
         "plugins-atone": "plugins-atone",
         "plugins-conflict-marker": "plugins-conflict-marker",
+        "plugins-copilot-lua": "plugins-copilot-lua",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
         "rust-overlay": "rust-overlay",

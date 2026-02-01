@@ -21,6 +21,10 @@
     url = "github:tronikelis/conflict-marker.nvim";
     flake = false;
   };
+  inputs.plugins-copilot-lua = {
+    url = "github:zbirenbaum/copilot.lua";
+    flake = false;
+  };
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     opencode.url = "github:anomalyco/opencode";
