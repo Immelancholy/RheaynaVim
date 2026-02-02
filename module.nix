@@ -199,6 +199,7 @@ inputs: {
         data = otter-nvim;
         lazy = false;
       }
+      cord-nvim
       git-blame-nvim
       indent-blankline-nvim
       nvim-dap-virtual-text

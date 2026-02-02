@@ -45,4 +45,7 @@ return {
 	{ import = "plugins.opencode" },
 	{ import = "plugins.startuptime" },
 	{ import = "plugins.atone" },
+
+	-- Discord RPC
+	{ import = "plugins.cord" },
 }
