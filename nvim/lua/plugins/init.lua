@@ -27,6 +27,9 @@ return {
 	{ import = "plugins.harpoon" },
 	{ import = "plugins.flash" },
 
+	-- File Nav
+	{ import = "plugins.oil" },
+
 	-- Editing
 	{ import = "plugins.surround" },
 	{ import = "plugins.better-escape" },
