@@ -5,8 +5,6 @@ return {
 	lazy = false,
 	priority = 1000,
 	after = function(plugin)
-		-- Custom indent highlight color
-		vim.api.nvim_set_hl(0, "MySnacksIndent", { fg = "#32a88f" })
 		require("snacks").setup({
 			dashboard = {
 				enabled = true,

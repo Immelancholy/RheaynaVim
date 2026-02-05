@@ -219,6 +219,22 @@
         "type": "github"
       }
     },
+    "plugins-nvim-highlight-colors": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769415958,
+        "narHash": "sha256-LrY61knLKAn36+RnMddAzxf/wYtdnLxnnQhtHB3mQwc=",
+        "owner": "brenoprata10",
+        "repo": "nvim-highlight-colors",
+        "rev": "e2cb22089cc2358b2b995c09578224f142de6039",
+        "type": "github"
+      },
+      "original": {
+        "owner": "brenoprata10",
+        "repo": "nvim-highlight-colors",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "neovim-nightly-overlay": "neovim-nightly-overlay",
@@ -229,6 +245,7 @@
         "plugins-copilot-lua": "plugins-copilot-lua",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
+        "plugins-nvim-highlight-colors": "plugins-nvim-highlight-colors",
         "rust-overlay": "rust-overlay",
         "wrappers": "wrappers"
       }

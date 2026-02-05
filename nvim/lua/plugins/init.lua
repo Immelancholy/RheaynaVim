@@ -7,11 +7,12 @@ return {
 	{ import = "plugins.noice" },
 	{ import = "plugins.snacks" },
 	{ import = "plugins.lualine" },
-	{ import = "plugins.indent-blankline" },
 	{ import = "plugins.mini-icons" },
 	{ import = "plugins.tiny-inline-diagnostic" },
 	{ import = "plugins.fidget" },
 	{ import = "plugins.which-key" },
+	{ import = "plugins.nvim-highlight-colors" },
+	{ import = "plugins.indent-blankline" },
 
 	-- LSP and language support
 	{ import = "plugins.lsp" },

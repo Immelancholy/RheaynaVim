@@ -25,6 +25,10 @@
     url = "github:zbirenbaum/copilot.lua";
     flake = false;
   };
+  inputs.plugins-nvim-highlight-colors = {
+    url = "github:brenoprata10/nvim-highlight-colors";
+    flake = false;
+  };
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     opencode.url = "github:anomalyco/opencode";

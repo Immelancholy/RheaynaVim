@@ -83,6 +83,10 @@ inputs: {
     config.nvim-lib.neovimPlugins.atone
   ];
 
+  config.specs.nvim-highlight-colors = [
+    config.nvim-lib.neovimPlugins.nvim-highlight-colors
+  ];
+
   config.specs.hypr = {
     data = null;
     extraPackages = with pkgs; [
