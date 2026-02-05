@@ -31,7 +31,7 @@
   };
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    opencode.url = "github:anomalyco/opencode/v1.1.52";
+    opencode.url = "github:anomalyco/opencode/production";
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
   outputs = {
