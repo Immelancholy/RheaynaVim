@@ -220,6 +220,22 @@
         "type": "github"
       }
     },
+    "plugins-mole": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771005680,
+        "narHash": "sha256-6wfGkvb0n+1hlzfem4wCIeB1eUq4epxomUV15Q4l5f8=",
+        "owner": "zion-off",
+        "repo": "mole.nvim",
+        "rev": "3e0b2ba5ff90c6d697b4b151b197d398d5735362",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zion-off",
+        "repo": "mole.nvim",
+        "type": "github"
+      }
+    },
     "plugins-nvim-highlight-colors": {
       "flake": false,
       "locked": {
@@ -246,6 +262,7 @@
         "plugins-copilot-lua": "plugins-copilot-lua",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
+        "plugins-mole": "plugins-mole",
         "plugins-nvim-highlight-colors": "plugins-nvim-highlight-colors",
         "rust-overlay": "rust-overlay",
         "wrappers": "wrappers"

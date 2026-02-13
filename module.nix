@@ -139,6 +139,10 @@ inputs: {
     config.nvim-lib.neovimPlugins.copilot-lua
   ];
 
+  config.specs.mole = [
+    config.nvim-lib.neovimPlugins.mole
+  ];
+
   config.specs.general = {
     # this would ensure any config included from nix in here will be ran after any provided by the `lze` spec
     # If we provided any from within either spec, anyway
@@ -201,6 +205,10 @@ inputs: {
       }
       {
         data = otter-nvim;
+        lazy = false;
+      }
+      {
+        data = nui-nvim;
         lazy = false;
       }
       oil-nvim

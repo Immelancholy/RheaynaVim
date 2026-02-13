@@ -29,6 +29,10 @@
     url = "github:brenoprata10/nvim-highlight-colors";
     flake = false;
   };
+  inputs.plugins-mole = {
+    url = "github:zion-off/mole.nvim";
+    flake = false;
+  };
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     opencode.url = "github:anomalyco/opencode/tags/v1.1.53";
