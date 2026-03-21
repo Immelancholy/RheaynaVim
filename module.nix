@@ -135,10 +135,6 @@ inputs: {
       config.nvim-lib.neovimPlugins.conflict-marker
   ];
 
-  config.specs.copilot-lua = [
-    config.nvim-lib.neovimPlugins.copilot-lua
-  ];
-
   config.specs.mole = [
     config.nvim-lib.neovimPlugins.mole
   ];
@@ -228,7 +224,6 @@ inputs: {
       nvim-surround
       vim-startuptime
       blink-cmp
-      blink-cmp-copilot
       blink-compat
       cmp-cmdline
       colorful-menu-nvim

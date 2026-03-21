@@ -21,10 +21,6 @@
     url = "github:tronikelis/conflict-marker.nvim";
     flake = false;
   };
-  inputs.plugins-copilot-lua = {
-    url = "github:zbirenbaum/copilot.lua";
-    flake = false;
-  };
   inputs.plugins-nvim-highlight-colors = {
     url = "github:brenoprata10/nvim-highlight-colors";
     flake = false;
