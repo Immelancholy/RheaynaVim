@@ -45,7 +45,6 @@ return {
 	-- Tools
 	{ import = "plugins.obsidian" },
 	{ import = "plugins.otter" },
-	{ import = "plugins.opencode" },
 	{ import = "plugins.startuptime" },
 	{ import = "plugins.atone" },
 	{ import = "plugins.mole" },
