@@ -22,7 +22,6 @@ return {
 
 	-- Completion
 	{ import = "plugins.completion" },
-	{ import = "plugins.copilot" },
 
 	-- Navigation
 	{ import = "plugins.harpoon" },
