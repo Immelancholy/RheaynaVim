@@ -10,13 +10,6 @@ api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Enable Copilot on VimEnter
-api.nvim_create_autocmd("VimEnter", {
-	callback = function()
-		vim.cmd("Copilot enable")
-	end,
-})
-
 -- Highlight on yank
 local highlight_group = api.nvim_create_augroup("YankHighlight", { clear = true })
 api.nvim_create_autocmd("TextYankPost", {
