@@ -79,13 +79,6 @@ inputs: {
     }
   ];
 
-  config.specs.atone = [
-    config.nvim-lib.neovimPlugins.atone
-  ];
-
-  config.specs.nvim-highlight-colors = [
-    config.nvim-lib.neovimPlugins.nvim-highlight-colors
-  ];
 
   config.specs.hypr = {
     data = null;
@@ -132,11 +125,30 @@ inputs: {
   };
 
   config.specs.conflict-marker = [
-      config.nvim-lib.neovimPlugins.conflict-marker
+    config.nvim-lib.neovimPlugins.conflict-marker
+  ];
+
+  config.specs.lexima = [
+    {
+      data = config.nvim-lib.neovimPlugins.lexima;
+      lazy = false;
+    }
   ];
 
   config.specs.mole = [
     config.nvim-lib.neovimPlugins.mole
+  ];
+
+  config.specs.atone = [
+    config.nvim-lib.neovimPlugins.atone
+  ];
+
+  config.specs.nvim-highlight-colors = [
+    config.nvim-lib.neovimPlugins.nvim-highlight-colors
+  ];
+
+  config.specs.vim-be-good = [
+    config.nvim-lib.neovimPlugins.vim-be-good
   ];
 
   config.specs.general = {
@@ -175,10 +187,6 @@ inputs: {
         lazy = false;
       }
       {
-        data = lexima-vim;
-        lazy = false;
-      }
-      {
         data = plenary-nvim;
         lazy = false;
       }
@@ -188,10 +196,6 @@ inputs: {
       }
       {
         data = nvim-dap-ui;
-        lazy = false;
-      }
-      {
-        data = vim-be-good;
         lazy = false;
       }
       {
