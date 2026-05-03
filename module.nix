@@ -148,7 +148,6 @@ inputs: {
       lazygit
       tree-sitter
       pkgs.vscode-extensions.vadimcn.vscode-lldb
-      inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
     # this `lazy = true` definition will transfer to specs in the contained DAL, if there is one.
     # This is because the definition of lazy in `config.specMods` checks `parentSpec.lazy or false`
@@ -165,10 +164,6 @@ inputs: {
       }
       {
         data = nvim-notify;
-        lazy = false;
-      }
-      {
-        data = opencode-nvim;
         lazy = false;
       }
       {
