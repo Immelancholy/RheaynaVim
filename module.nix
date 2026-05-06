@@ -79,7 +79,6 @@ inputs: {
     }
   ];
 
-
   config.specs.hypr = {
     data = null;
     extraPackages = with pkgs; [
@@ -126,13 +125,6 @@ inputs: {
 
   config.specs.conflict-marker = [
     config.nvim-lib.neovimPlugins.conflict-marker
-  ];
-
-  config.specs.lexima = [
-    {
-      data = config.nvim-lib.neovimPlugins.lexima;
-      lazy = false;
-    }
   ];
 
   config.specs.mole = [
@@ -223,6 +215,7 @@ inputs: {
       nvim-surround
       vim-startuptime
       blink-cmp
+      inputs.blink-pairs.packages.${pkgs.stdenv.hostPlatform.system}.default
       blink-compat
       cmp-cmdline
       colorful-menu-nvim

@@ -29,10 +29,6 @@
     url = "github:zion-off/mole.nvim";
     flake = false;
   };
-  inputs.plugins-lexima = {
-    url = "github:cohama/lexima.vim";
-    flake = false;
-  };
   inputs.plugins-vim-be-good = {
     url = "github:ThePrimeagen/vim-be-good";
     flake = false;
@@ -40,6 +36,7 @@
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    blink-pairs.url = "github:saghen/blink.pairs";
   };
   outputs = {
     self,
