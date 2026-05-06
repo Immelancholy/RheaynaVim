@@ -16,6 +16,7 @@ return {
 				nix = { "alejandra" },
 				rust = { "rustfmt" },
 			},
+			format_on_save = { timeout_ms = 500 },
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>FF", function()
