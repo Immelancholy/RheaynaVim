@@ -32,7 +32,7 @@ inputs: {
 
   # and make sure these dont share values:
   # config.binName = "nvim";
-  # config.settings.aliases = [ ];
+  config.settings.aliases = [ "rheayna-vim" "rv" "rvim" ];
 
   # To add a wrapped $out/bin/${config.binName}-neovide to the resulting neovim derivation
   # config.hosts.neovide.nvim-host.enable = true;
