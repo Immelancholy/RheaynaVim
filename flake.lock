@@ -1,45 +1,5 @@
 {
   "nodes": {
-    "blink-lib": {
-      "inputs": {
-        "nixpkgs": [
-          "blink-pairs",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1779999494,
-        "narHash": "sha256-0oQfbISX+VQKPTyFm+V8kHtudDXnJoCCaMYutZ82gUw=",
-        "owner": "saghen",
-        "repo": "blink.lib",
-        "rev": "41bc1199dd1f5f0687efbd522061b22002c2d4c5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "saghen",
-        "repo": "blink.lib",
-        "type": "github"
-      }
-    },
-    "blink-pairs": {
-      "inputs": {
-        "blink-lib": "blink-lib",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1780319200,
-        "narHash": "sha256-nz1oQdoVNESbBFu/+iq1nBOeQ65mtslBItk49u5t3LA=",
-        "owner": "saghen",
-        "repo": "blink.pairs",
-        "rev": "436857a5c2558c8f66a61ce4745d1342789a4881",
-        "type": "github"
-      },
-      "original": {
-        "owner": "saghen",
-        "repo": "blink.pairs",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -65,7 +25,7 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "neovim-src": "neovim-src",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1780272288,
@@ -99,15 +59,18 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1777268161,
-        "narHash": "sha256-e1tDUQMbFCxCnke314UpghgRqg3FJLtcXFfq/WTRLYI=",
-        "rev": "1c3fe55ad329cbcb28471bb30f05c9827f724c76",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre987561.1c3fe55ad329/nixexprs.tar.xz"
+        "lastModified": 1780030872,
+        "narHash": "sha256-u6WU/yd/o8iYQrHX3RAwO1hYa3LkoSL+WNQD0rJfJZQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e9a7635a57597d9754eccebdfc7045e6c8600e6b",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_2": {
@@ -127,22 +90,6 @@
       }
     },
     "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1780030872,
-        "narHash": "sha256-u6WU/yd/o8iYQrHX3RAwO1hYa3LkoSL+WNQD0rJfJZQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e9a7635a57597d9754eccebdfc7045e6c8600e6b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
       "locked": {
         "lastModified": 1744536153,
         "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
@@ -238,6 +185,22 @@
         "type": "github"
       }
     },
+    "plugins-nvim-autopairs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778204579,
+        "narHash": "sha256-klOJgBPw8oGDnF9wKIpGDzuBY+tH1acRyvZSPR4wrjw=",
+        "owner": "windwp",
+        "repo": "nvim-autopairs",
+        "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
+        "type": "github"
+      },
+      "original": {
+        "owner": "windwp",
+        "repo": "nvim-autopairs",
+        "type": "github"
+      }
+    },
     "plugins-nvim-highlight-colors": {
       "flake": false,
       "locked": {
@@ -272,14 +235,14 @@
     },
     "root": {
       "inputs": {
-        "blink-pairs": "blink-pairs",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "plugins-atone": "plugins-atone",
         "plugins-conflict-marker": "plugins-conflict-marker",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
         "plugins-mole": "plugins-mole",
+        "plugins-nvim-autopairs": "plugins-nvim-autopairs",
         "plugins-nvim-highlight-colors": "plugins-nvim-highlight-colors",
         "plugins-vim-be-good": "plugins-vim-be-good",
         "rust-overlay": "rust-overlay",
@@ -288,7 +251,7 @@
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1780284119,

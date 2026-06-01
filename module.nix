@@ -87,7 +87,7 @@ inputs:
 
   config.specs.hypr = {
     data = null;
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       hyprls
     ];
   };
@@ -95,15 +95,15 @@ inputs:
   # you can name these whatever you want.
   config.specs.nix = {
     data = null;
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       nixd
-      nixfmt-tree
+      nixfmt
     ];
   };
 
   config.specs.bash = {
     data = null;
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       bash-language-server
       shfmt
       shellcheck
@@ -112,7 +112,7 @@ inputs:
 
   config.specs.rust = {
     data = null;
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       (rust-bin.selectLatestNightlyWith (
         toolchain:
         toolchain.default.override {
@@ -131,7 +131,7 @@ inputs:
     data = with pkgs.vimPlugins; [
       lazydev-nvim
     ];
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       lua-language-server
       stylua
     ];
@@ -157,12 +157,16 @@ inputs:
     config.nvim-lib.neovimPlugins.vim-be-good
   ];
 
+  config.specs.nvim-autopairs = [
+    config.nvim-lib.neovimPlugins.nvim-autopairs
+  ];
+
   config.specs.general = {
     # this would ensure any config included from nix in here will be ran after any provided by the `lze` spec
     # If we provided any from within either spec, anyway
     after = [ "lze" ];
     # note we didn't have to specify the `lze` specs name, because it was a top level spec
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       lazygit
       tree-sitter
       pkgs.vscode-extensions.vadimcn.vscode-lldb
@@ -229,7 +233,6 @@ inputs:
       nvim-surround
       vim-startuptime
       blink-cmp
-      inputs.blink-pairs.packages.${pkgs.stdenv.hostPlatform.system}.default
       blink-compat
       cmp-cmdline
       colorful-menu-nvim
@@ -279,16 +282,16 @@ inputs:
       # config.runtimeDeps = lib.mkDefault (parentSpec.runtimeDeps or false);
       # config.pluginDeps = lib.mkDefault (parentSpec.pluginDeps or false);
       # or something more interesting like:
-      # add an extraPackages field to the specs themselves
-      options.extraPackages = lib.mkOption {
+      # add a runtimePkgs field to the specs themselves
+      options.runtimePkgs = lib.mkOption {
         type = lib.types.listOf wlib.types.stringable;
         default = [ ];
-        description = "a extraPackages spec field to put packages to suffix to the PATH";
+        description = "a runtimePkgs spec field to put packages to suffix to the PATH";
       };
       # You could do this too
       # config.before = lib.mkDefault [ "INIT_MAIN" ];
     };
-  config.extraPackages = config.specCollect (acc: v: acc ++ (v.extraPackages or [ ])) [ ];
+  config.runtimePkgs = config.specCollect (acc: v: acc ++ (v.runtimePkgs or [ ])) [ ];
 
   # Inform our lua of which top level specs are enabled
   options.settings.cats = lib.mkOption {
