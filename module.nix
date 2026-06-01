@@ -91,7 +91,7 @@ inputs: {
     data = null;
     extraPackages = with pkgs; [
       nixd
-      alejandra
+      nixfmt-tree
     ];
   };
 

@@ -13,7 +13,7 @@ return {
 				lua = nixInfo(nil, "settings", "cats", "lua") and { "stylua" } or nil,
 				sh = { "shfmt" },
 				bash = { "shfmt" },
-				nix = { "alejandra" },
+				nix = { "nixfmt-tree" },
 				rust = { "rustfmt" },
 			},
 			format_on_save = { timeout_ms = 500 },
