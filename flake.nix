@@ -49,6 +49,7 @@
     module = nixpkgs.lib.modules.importApply ./module.nix inputs;
     wrapper = wrappers.lib.evalModule module;
   in {
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
     overlays = {
       default = final: prev: {neovim = wrapper.config.wrap {pkgs = final;};};
       neovim = self.overlays.default;
