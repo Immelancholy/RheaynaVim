@@ -174,7 +174,7 @@ return {
 		end
 
 		-- Snacks keymaps
-		vim.keymap.set("n", "-", function()
+		vim.keymap.set("n", "_", function()
 			Snacks.explorer.open()
 		end, { desc = "Snacks file explorer" })
 		vim.keymap.set("n", "<c-\\>", function()

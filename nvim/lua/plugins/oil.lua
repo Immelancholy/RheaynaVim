@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	after = function()
 		require("oil").setup()
-		vim.keymap.set("n", "_", function()
+		vim.keymap.set("n", "-", function()
 			vim.cmd("Oil")
 		end, { desc = "Open Oil" })
 	end,
