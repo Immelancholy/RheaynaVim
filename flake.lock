@@ -105,6 +105,38 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1770562336,
+        "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d6c71932130818840fc8fe9509cf50be8c64634f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "plugins-arborist": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778306420,
+        "narHash": "sha256-2/rKIK62Yp1dWzXpJKAr8XATPy/h9RyLVOURDcTTBOc=",
+        "owner": "arborist-ts",
+        "repo": "arborist.nvim",
+        "rev": "fdeef56c2840c6772b9f68c5774ed87e9340ec7d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arborist-ts",
+        "repo": "arborist.nvim",
+        "type": "github"
+      }
+    },
     "plugins-atone": {
       "flake": false,
       "locked": {
@@ -237,6 +269,7 @@
       "inputs": {
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
+        "plugins-arborist": "plugins-arborist",
         "plugins-atone": "plugins-atone",
         "plugins-conflict-marker": "plugins-conflict-marker",
         "plugins-lze": "plugins-lze",
@@ -246,6 +279,7 @@
         "plugins-nvim-highlight-colors": "plugins-nvim-highlight-colors",
         "plugins-vim-be-good": "plugins-vim-be-good",
         "rust-overlay": "rust-overlay",
+        "tree-sitter": "tree-sitter",
         "wrappers": "wrappers"
       }
     },
@@ -264,6 +298,24 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "tree-sitter": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1780369680,
+        "narHash": "sha256-54ngfFpiPEzCncF10ugDka00EXzjIhW58IbYvKxGeEU=",
+        "owner": "tree-sitter",
+        "repo": "tree-sitter",
+        "rev": "ff4dbc058918336ad4dda3aa930b5d832ff9758d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tree-sitter",
+        "repo": "tree-sitter",
         "type": "github"
       }
     },

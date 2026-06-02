@@ -19,7 +19,7 @@ inputs:
 
   # choose a directory for your config.
   config.settings.config_directory = ./nvim/.;
-  config.package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+  config.package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   # you can also use an impure path!
   # config.settings.config_directory = lib.generators.mkLuaInline "vim.fn.stdpath('config')";
@@ -161,6 +161,13 @@ inputs:
     config.nvim-lib.neovimPlugins.nvim-autopairs
   ];
 
+  config.specs.arborist = [
+    {
+      data = config.nvim-lib.neovimPlugins.arborist;
+      lazy = false;
+    }
+  ];
+
   config.specs.general = {
     # this would ensure any config included from nix in here will be ran after any provided by the `lze` spec
     # If we provided any from within either spec, anyway
@@ -243,16 +250,6 @@ inputs:
       nvim-lint
       conform-nvim
       obsidian-nvim
-      nvim-treesitter-textobjects
-      # treesitter + grammars
-      nvim-treesitter.withAllGrammars
-      # This is for if you only want some of the grammars
-      # (nvim-treesitter.withPlugins (
-      #   plugins: with plugins; [
-      #     nix
-      #     lua
-      #   ]
-      # ))
     ];
   };
 

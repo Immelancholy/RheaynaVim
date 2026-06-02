@@ -16,7 +16,7 @@ return {
 
 	-- LSP and language support
 	{ import = "plugins.lsp" },
-	{ import = "plugins.treesitter" },
+	{ import = "plugins.arborist" },
 	{ import = "plugins.conform" },
 	{ import = "plugins.lint" },
 

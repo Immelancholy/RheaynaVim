@@ -37,9 +37,14 @@
     url = "github:ThePrimeagen/vim-be-good";
     flake = false;
   };
+  inputs.plugins-arborist = {
+    url = "github:arborist-ts/arborist.nvim";
+    flake = false;
+  };
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    tree-sitter.url = "github:tree-sitter/tree-sitter";
   };
   outputs =
     {
