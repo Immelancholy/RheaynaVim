@@ -6,9 +6,6 @@ return {
   priority = 1000,
   after = function(plugin)
     require("snacks").setup({
-      exlorer = {
-        enabled = false,
-      },
       dashboard = {
         enabled = true,
         width = 60,
@@ -176,6 +173,9 @@ return {
     end
 
     -- Snacks keymaps
+    vim.keymap.set("n", "-", function()
+      Snacks.explorer.open()
+    end, { desc = "Snacks file explorer" })
     vim.keymap.set("n", "<c-\\>", function()
       Snacks.terminal.open()
     end, { desc = "Snacks Terminal" })
