@@ -1,30 +1,66 @@
 -- conform.nvim configuration
 return {
-	"conform.nvim",
-	auto_enable = true,
-	keys = {
-		{ "<leader>FF", desc = "[F]ormat [F]ile" },
-	},
-	after = function(plugin)
-		local conform = require("conform")
+  "conform.nvim",
+  auto_enable = true,
+  keys = {
+    { "<leader>FF", desc = "[F]ormat [F]ile" },
+  },
+  after = function(plugin)
+    local conform = require("conform")
 
-		conform.setup({
-			formatters_by_ft = {
-				lua = nixInfo(nil, "settings", "cats", "lua") and { "stylua" } or nil,
-				sh = { "shfmt" },
-				bash = { "shfmt" },
-				nix = { "nixfmt" },
-				rust = { "rustfmt" },
-			},
-			format_on_save = { timeout_ms = 500 },
-		})
+    conform.setup({
+      formatters_by_ft = {
+        lua = { "mystylua" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        nix = { "nixfmt" },
+        rust = { "rustfmt" },
+      },
+      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+      formatters = {
+        mystylua = {
+          command = "stylua",
+          args = { "--indent-type", "Spaces", "--indent-width", "2", "-" },
+        },
+      },
+    })
+    conform.formatters.injected = {
+      -- Set the options field
+      options = {
+        -- Set to true to ignore errors
+        ignore_errors = false,
+        -- Map of treesitter language to file extension
+        -- A temporary file name with this extension will be generated during formatting
+        -- because some formatters care about the filename.
+        lang_to_ext = {
+          bash = "sh",
+          c_sharp = "cs",
+          elixir = "exs",
+          javascript = "js",
+          julia = "jl",
+          latex = "tex",
+          markdown = "md",
+          python = "py",
+          ruby = "rb",
+          rust = "rs",
+          teal = "tl",
+          r = "r",
+          typescript = "ts",
+          nix = "nix",
+          lua = "lua",
+        },
+        -- Map of treesitter language to formatters to use
+        -- (defaults to the value from formatters_by_ft)
+        lang_to_formatters = {},
+      },
+    }
 
-		vim.keymap.set({ "n", "v" }, "<leader>FF", function()
-			conform.format({
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 1000,
-			})
-		end, { desc = "[F]ormat [F]ile" })
-	end,
+    vim.keymap.set({ "n", "v" }, "<leader>FF", function()
+      conform.format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+      })
+    end, { desc = "[F]ormat [F]ile" })
+  end,
 }

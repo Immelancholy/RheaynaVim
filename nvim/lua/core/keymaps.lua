@@ -34,8 +34,18 @@ keymap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics l
 keymap({ "v", "x", "n" }, "<leader>y", '"+y', { noremap = true, silent = true, desc = "Yank to clipboard" })
 keymap({ "n", "v", "x" }, "<leader>Y", '"+yy', { noremap = true, silent = true, desc = "Yank line to clipboard" })
 keymap({ "n", "v", "x" }, "<leader>p", '"+p', { noremap = true, silent = true, desc = "Paste from clipboard" })
-keymap("i", "<C-p>", "<C-r><C-p>+", { noremap = true, silent = true, desc = "Paste from clipboard from within insert mode" })
-keymap("x", "<leader>P", '"_dP', { noremap = true, silent = true, desc = "Paste over selection without erasing unnamed register" })
+keymap(
+  "i",
+  "<C-p>",
+  "<C-r><C-p>+",
+  { noremap = true, silent = true, desc = "Paste from clipboard from within insert mode" }
+)
+keymap(
+  "x",
+  "<leader>P",
+  '"_dP',
+  { noremap = true, silent = true, desc = "Paste over selection without erasing unnamed register" }
+)
 
 -- Increment/Decrement remaps (freeing C-a and C-x for opencode)
 keymap("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })

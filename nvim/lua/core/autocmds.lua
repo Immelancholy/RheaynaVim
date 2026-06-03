@@ -4,19 +4,18 @@ local api = vim.api
 
 -- Disable auto comment on enter
 api.nvim_create_autocmd("FileType", {
-	desc = "remove formatoptions",
-	callback = function()
-		vim.opt.formatoptions:remove({ "c", "r", "o" })
-	end,
+  desc = "remove formatoptions",
+  callback = function()
+    vim.opt.formatoptions:remove({ "c", "r", "o" })
+  end,
 })
 
 -- Highlight on yank
 local highlight_group = api.nvim_create_augroup("YankHighlight", { clear = true })
 api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
 })
-
