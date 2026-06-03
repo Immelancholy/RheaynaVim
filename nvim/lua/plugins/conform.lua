@@ -1,7 +1,7 @@
 -- conform.nvim configuration
 return {
   "conform.nvim",
-  auto_enable = true,
+  event = "VimEnter",
   keys = {
     { "<leader>FF", desc = "[F]ormat [F]ile" },
   },
