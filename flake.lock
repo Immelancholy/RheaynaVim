@@ -169,6 +169,22 @@
         "type": "github"
       }
     },
+    "plugins-conform": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779792615,
+        "narHash": "sha256-3Rfl2krKpR8fyXSody4eM1py3AVSiEqJcPH8mA1P3nk=",
+        "owner": "auscyber",
+        "repo": "conform.nvim",
+        "rev": "49adb4dae989bb72295fedd621a433f8000067e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "auscyber",
+        "repo": "conform.nvim",
+        "type": "github"
+      }
+    },
     "plugins-lze": {
       "flake": false,
       "locked": {
@@ -272,6 +288,7 @@
         "plugins-arborist": "plugins-arborist",
         "plugins-atone": "plugins-atone",
         "plugins-conflict-marker": "plugins-conflict-marker",
+        "plugins-conform": "plugins-conform",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
         "plugins-mole": "plugins-mole",

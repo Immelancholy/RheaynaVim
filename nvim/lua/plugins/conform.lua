@@ -15,6 +15,8 @@ return {
         bash = { "shfmt" },
         nix = { "nixfmt" },
         rust = { "rustfmt" },
+        ["*"] = { "injected" },
+        ["_"] = { "trim_whitespace", "squeeze_blanks" },
       },
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
       formatters = {

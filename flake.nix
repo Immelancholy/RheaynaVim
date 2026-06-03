@@ -41,6 +41,10 @@
     url = "github:arborist-ts/arborist.nvim";
     flake = false;
   };
+  inputs.plugins-conform = {
+    url = "github:auscyber/conform.nvim";
+    flake = false;
+  };
   inputs = {
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     rust-overlay.url = "github:oxalica/rust-overlay";

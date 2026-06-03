@@ -167,6 +167,9 @@ inputs:
       lazy = false;
     }
   ];
+  config.specs.conform = [
+    config.nvim-lib.neovimPlugins.conform
+  ];
 
   config.specs.general = {
     # this would ensure any config included from nix in here will be ran after any provided by the `lze` spec
@@ -248,7 +251,6 @@ inputs:
       which-key-nvim
       fidget-nvim
       nvim-lint
-      conform-nvim
       obsidian-nvim
     ];
   };
