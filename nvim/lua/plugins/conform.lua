@@ -10,7 +10,7 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        lua = { "mystylua" },
+        lua = { "stylua" },
         sh = { "shfmt" },
         bash = { "shfmt" },
         nix = { "nixfmt" },
@@ -18,7 +18,7 @@ return {
       },
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
       formatters = {
-        mystylua = {
+        stylua = {
           command = "stylua",
           args = { "--indent-type", "Spaces", "--indent-width", "2", "-" },
         },
