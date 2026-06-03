@@ -24,6 +24,10 @@ return {
           command = "stylua",
           args = { "--indent-type", "Spaces", "--indent-width", "2", "-" },
         },
+        nixfmt = {
+          command = "nixfmt",
+          args = { "-" },
+        },
       },
     })
     conform.formatters.injected = {
