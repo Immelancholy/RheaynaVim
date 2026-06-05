@@ -66,7 +66,7 @@
     {
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
       overlays = {
-        default = final: prev: { rheayna-vim = wrapper.config.wrap { pkgs = final; }; };
+        default = final: prev: { neovim = wrapper.config.wrap { pkgs = final; }; };
         neovim = self.overlays.default;
       };
       wrapperModules = {

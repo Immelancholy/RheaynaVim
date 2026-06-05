@@ -137,6 +137,13 @@ inputs:
     ];
   };
 
+  config.specs.vs-code-extracted = {
+    data = null;
+    runtimePkgs = with pkgs; [
+      vscode-langservers-extracted
+    ];
+  };
+
   config.specs.conflict-marker = [
     config.nvim-lib.neovimPlugins.conflict-marker
   ];

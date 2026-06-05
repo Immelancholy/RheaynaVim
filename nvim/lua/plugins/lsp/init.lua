@@ -88,4 +88,5 @@ return {
   { import = "plugins.lsp.nixd" },
   { import = "plugins.lsp.bashls" },
   { import = "plugins.lsp.hypr" },
+  { import = "plugins.lsp.cssls" },
 }
