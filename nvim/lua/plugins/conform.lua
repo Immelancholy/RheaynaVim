@@ -11,15 +11,16 @@ return {
     conform.setup({
       formatters_by_ft = {
         lua = { "stylua" },
-        sh = { "shfmt" },
-        bash = { "shfmt" },
+        sh = { "shfmt", "shellcheck" },
+        bash = { "shfmt", "shellcheck" },
+        zsh = { "shfmt", "shellcheck" },
         nix = { "nixfmt" },
         rust = { "rustfmt" },
         python = { "ruff", "black" },
         ["*"] = { "injected" },
         ["_"] = { "trim_whitespace", "squeeze_blanks" },
       },
-      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+      format_on_save = { async = true, timeout_ms = 500, lsp_fallback = true },
       formatters = {
         stylua = {
           command = "stylua",
@@ -41,6 +42,8 @@ return {
         -- because some formatters care about the filename.
         lang_to_ext = {
           bash = "sh",
+          sh = "sh",
+          zsh = "zsh",
           c_sharp = "cs",
           elixir = "exs",
           javascript = "js",
@@ -65,7 +68,7 @@ return {
     vim.keymap.set({ "n", "v" }, "<leader>FF", function()
       conform.format({
         lsp_fallback = true,
-        async = false,
+        async = true,
         timeout_ms = 1000,
       })
     end, { desc = "[F]ormat [F]ile" })
