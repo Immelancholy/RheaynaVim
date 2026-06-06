@@ -11,7 +11,6 @@ return {
   { import = "plugins.tiny-inline-diagnostic" },
   { import = "plugins.fidget" },
   { import = "plugins.which-key" },
-  { import = "plugins.nvim-highlight-colors" },
   { import = "plugins.indent-blankline" },
 
   -- LSP and language support
@@ -19,6 +18,7 @@ return {
   { import = "plugins.arborist" },
   { import = "plugins.conform" },
   { import = "plugins.lint" },
+  { import = "plugins.ccc" },
 
   -- Completion
   { import = "plugins.completion" },

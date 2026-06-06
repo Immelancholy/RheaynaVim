@@ -249,6 +249,10 @@ inputs:
         data = nui-nvim;
         lazy = false;
       }
+      {
+        data = ccc-nvim;
+        lazy = false;
+      }
       oil-nvim
       cord-nvim
       git-blame-nvim

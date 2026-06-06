@@ -131,14 +131,14 @@
       devShells = forAllSystems (system: {
         default =
           let
-            pkgs = nixpkgs.legacyPackages.${system};
+            pkgs = import nixpkgs { inherit system; };
             inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
           in
           pkgs.mkShell {
             inherit shellHook;
             buildInputs = enabledPackages;
             packages = [
-              self.packages.${system}.default
+              self.packages.${system}.neovim
             ];
           };
       });
