@@ -91,6 +91,16 @@ inputs:
     }
   ];
 
+  config.specs.python = {
+    data = null;
+    runtimePkgs = with pkgs; [
+      ruff
+      black
+      basedpyright
+      pyrefly
+    ];
+  };
+
   config.specs.hypr = {
     data = null;
     runtimePkgs = with pkgs; [

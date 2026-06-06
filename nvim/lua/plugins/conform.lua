@@ -15,6 +15,7 @@ return {
         bash = { "shfmt" },
         nix = { "nixfmt" },
         rust = { "rustfmt" },
+        python = { "ruff", "black" },
         ["*"] = { "injected" },
         ["_"] = { "trim_whitespace", "squeeze_blanks" },
       },

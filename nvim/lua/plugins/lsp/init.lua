@@ -89,4 +89,5 @@ return {
   { import = "plugins.lsp.bashls" },
   { import = "plugins.lsp.hypr" },
   { import = "plugins.lsp.cssls" },
+  { import = "plugins.lsp.pyrefly" },
 }
