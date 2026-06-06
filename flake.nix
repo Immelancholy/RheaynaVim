@@ -46,9 +46,9 @@
     flake = false;
   };
   inputs = {
+    git-hooks.url = "github:cachix/git-hooks.nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    tree-sitter.url = "github:tree-sitter/tree-sitter";
   };
   outputs =
     {
@@ -64,7 +64,47 @@
       wrapper = wrappers.lib.evalModule module;
     in
     {
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+      formatter = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          config = self.checks.${system}.pre-commit-check.config;
+          inherit (config) package configFile;
+          script = ''
+            ${pkgs.lib.getExe package} run --all-files --config ${configFile}
+          '';
+        in
+        pkgs.writeShellScriptBin "pre-commit-run" script
+      );
+
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        {
+          pre-commit-check = inputs.git-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              nixfmt.enable = true;
+
+              stylua = {
+                enable = true;
+                args = [
+                  "--indent-type"
+                  "Spaces"
+                  "--indent-width"
+                  "2"
+                  "-"
+                ];
+              };
+            };
+
+            package = pkgs.prek;
+          };
+        }
+      );
+
       overlays = {
         default = final: prev: { rheayna-vim = wrapper.config.wrap { pkgs = final; }; };
         neovim = self.overlays.default;
@@ -88,5 +128,19 @@
           neovim = self.packages.${system}.default;
         }
       );
+      devShells = forAllSystems (system: {
+        default =
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+            inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
+          in
+          pkgs.mkShell {
+            inherit shellHook;
+            buildInputs = enabledPackages;
+            packages = [
+              self.packages.${system}.default
+            ];
+          };
+      });
     };
 }
