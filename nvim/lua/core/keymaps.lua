@@ -50,3 +50,6 @@ keymap(
 -- Increment/Decrement remaps (freeing C-a and C-x for opencode)
 keymap("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
 keymap("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
+
+-- Toggle text wrapping
+keymap({ "n", "v", "x" }, "<leader>W", "<cmd>set wrap!<CR>", { desc = "Toggle text wrapping", noremap = true })

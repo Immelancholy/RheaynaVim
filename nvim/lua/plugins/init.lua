@@ -39,6 +39,9 @@ return {
   { import = "plugins.gitblame" },
   { import = "plugins.conflict-marker" },
 
+  -- Jujutsu
+  { import = "plugins.lazyjj" },
+
   -- Debugging
   { import = "plugins.dap" },
 
