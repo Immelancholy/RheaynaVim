@@ -44,6 +44,7 @@ inputs:
     "rheayna-vim"
     "rv"
     "rvim"
+    "rh"
   ];
 
   # To add a wrapped $out/bin/${config.binName}-neovide to the resulting neovim derivation
