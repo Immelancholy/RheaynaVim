@@ -38,6 +38,7 @@ return {
   { import = "plugins.gitsigns" },
   { import = "plugins.gitblame" },
   { import = "plugins.conflict-marker" },
+  { import = "plugins.lazygit" },
 
   -- Jujutsu
   { import = "plugins.lazyjj" },

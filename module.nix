@@ -253,6 +253,7 @@ inputs:
         data = ccc-nvim;
         lazy = false;
       }
+      lazygit-nvim
       lazyjj-nvim
       oil-nvim
       cord-nvim
