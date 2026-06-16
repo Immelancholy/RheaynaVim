@@ -12,6 +12,7 @@ return {
   { import = "plugins.fidget" },
   { import = "plugins.which-key" },
   { import = "plugins.indent-blankline" },
+  { import = "plugins.render-markdown" },
 
   -- LSP and language support
   { import = "plugins.lsp" },
