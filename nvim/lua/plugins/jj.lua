@@ -1,7 +1,7 @@
 return {
-  "lazyjj.nvim",
+  "jj.nvim",
   event = "VimEnter",
   after = function()
-    require("lazyjj").setup()
+    require("jj").setup({})
   end,
 }

@@ -3,7 +3,7 @@ return {
   "lualine.nvim",
   auto_enable = true,
   event = "DeferredUIEnter",
-  after = function(plugin)
+  after = function()
     require("lualine").setup({
       options = {
         icons_enabled = false,

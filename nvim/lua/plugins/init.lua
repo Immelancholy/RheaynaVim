@@ -42,6 +42,7 @@ return {
 
   -- Jujutsu
   { import = "plugins.lazyjj" },
+  { import = "plugins.jj" },
 
   -- Debugging
   { import = "plugins.dap" },

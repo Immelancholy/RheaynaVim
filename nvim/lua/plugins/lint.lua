@@ -3,7 +3,7 @@ return {
   "nvim-lint",
   auto_enable = true,
   event = "FileType",
-  after = function(plugin)
+  after = function()
     require("lint").linters_by_ft = {
       bash = { "shellcheck" },
       nix = { "nix" },

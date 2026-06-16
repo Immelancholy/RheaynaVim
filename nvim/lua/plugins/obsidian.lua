@@ -2,7 +2,7 @@
 return {
   "obsidian.nvim",
   ft = "markdown",
-  after = function(plugin)
+  after = function()
     require("obsidian").setup({
       legacy_commands = false,
       workspaces = {

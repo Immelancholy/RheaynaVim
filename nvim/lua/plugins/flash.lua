@@ -2,7 +2,7 @@
 return {
   "flash.nvim",
   event = "VimEnter",
-  after = function(plugin)
+  after = function()
     require("flash").setup({})
 
     vim.keymap.set({ "n", "x", "o" }, "s", function()

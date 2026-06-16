@@ -3,7 +3,7 @@ return {
   "fidget.nvim",
   auto_enable = true,
   event = "DeferredUIEnter",
-  after = function(plugin)
+  after = function()
     require("fidget").setup({})
   end,
 }

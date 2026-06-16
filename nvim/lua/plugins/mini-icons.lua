@@ -2,7 +2,7 @@
 return {
   "mini.icons",
   event = "VimEnter",
-  after = function(plugin)
+  after = function()
     require("mini.icons").setup()
   end,
 }

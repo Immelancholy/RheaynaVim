@@ -3,7 +3,7 @@ return {
   "tiny-inline-diagnostic.nvim",
   auto_enable = true,
   event = "VimEnter",
-  after = function(plugin)
+  after = function()
     require("tiny-inline-diagnostic").setup({
       options = {
         add_messages = {

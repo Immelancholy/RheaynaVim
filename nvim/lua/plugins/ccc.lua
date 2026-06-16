@@ -1,7 +1,7 @@
 return {
   "ccc.nvim",
   event = "VimEnter",
-  after = function(plugin)
+  after = function()
     local ccc = require("ccc")
     ccc.setup({
       highlighter = {

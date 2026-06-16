@@ -3,14 +3,14 @@ return {
   {
     "nvim-dap-virtual-text",
     event = "VimEnter",
-    after = function(plugin)
+    after = function()
       require("nvim-dap-virtual-text").setup()
     end,
   },
   {
     "nvim-dap",
     event = "VimEnter",
-    after = function(plugin)
+    after = function()
       local dap = require("dap")
       local dapui = require("dapui")
 

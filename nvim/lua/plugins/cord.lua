@@ -3,7 +3,7 @@ return {
     "cord.nvim",
     cmd = { "Copilot" },
     event = "VimEnter",
-    after = function(plugin)
+    after = function()
       require("cord").setup()
     end,
   },

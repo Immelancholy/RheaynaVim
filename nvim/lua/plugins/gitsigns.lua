@@ -3,7 +3,7 @@ return {
   "gitsigns.nvim",
   auto_enable = true,
   event = "DeferredUIEnter",
-  after = function(plugin)
+  after = function()
     require("gitsigns").setup({
       signs = {
         add = { text = "+" },

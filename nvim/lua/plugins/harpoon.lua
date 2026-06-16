@@ -2,7 +2,7 @@
 return {
   "harpoon",
   event = "VimEnter",
-  after = function(plugin)
+  after = function()
     local harpoon = require("harpoon")
     harpoon:setup()
 

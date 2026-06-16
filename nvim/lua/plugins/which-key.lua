@@ -3,7 +3,7 @@ return {
   "which-key.nvim",
   auto_enable = true,
   event = "DeferredUIEnter",
-  after = function(plugin)
+  after = function()
     require("which-key").setup({})
     require("which-key").add({
       { "<leader><leader>", group = "buffer commands" },

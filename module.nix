@@ -255,6 +255,7 @@ inputs:
         lazy = false;
       }
       lazygit-nvim
+      jj-nvim
       lazyjj-nvim
       oil-nvim
       cord-nvim

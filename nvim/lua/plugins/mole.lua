@@ -1,7 +1,7 @@
 return {
   "mole.nvim",
   event = "VimEnter",
-  after = function(plugin)
+  after = function()
     require("mole").setup({
       -- Your config here
     })

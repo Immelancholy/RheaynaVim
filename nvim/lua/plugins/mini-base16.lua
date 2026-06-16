@@ -2,7 +2,7 @@
 return {
   "mini.base16",
   auto_enable = true,
-  after = function(plugin)
+  after = function()
     local json_path = os.getenv("HOME") .. "/.config/stylix/palette.json"
     local json_file = io.open(json_path, "r")
     local palette

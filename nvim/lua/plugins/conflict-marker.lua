@@ -2,7 +2,7 @@ return {
   "conflict-marker.nvim",
   auto_enable = true,
   lazy = false,
-  after = function(plugin)
+  after = function()
     require("conflict-marker").setup({
       highlights = true,
       markers = {

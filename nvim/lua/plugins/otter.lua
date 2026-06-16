@@ -2,7 +2,7 @@
 return {
   "otter.nvim",
   event = "VimEnter",
-  after = function(plugin)
+  after = function()
     local otter = require("otter")
     otter.setup({
       lsp = {

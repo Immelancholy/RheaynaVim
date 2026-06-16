@@ -4,7 +4,7 @@ return {
   auto_enable = true,
   lazy = false,
   priority = 1000,
-  after = function(plugin)
+  after = function()
     require("snacks").setup({
       dashboard = {
         enabled = true,

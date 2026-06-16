@@ -1,7 +1,7 @@
 return {
   "git-blame.nvim",
   event = "VimEnter",
-  after = function(plugin)
+  after = function()
     require("gitblame").setup({
       enabled = true, -- if you want to enable the plugin
       message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options

@@ -5,7 +5,7 @@ return {
   keys = {
     { "<leader>FF", desc = "[F]ormat [F]ile" },
   },
-  after = function(plugin)
+  after = function()
     local conform = require("conform")
 
     conform.setup({
