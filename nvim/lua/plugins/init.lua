@@ -13,6 +13,7 @@ return {
   { import = "plugins.which-key" },
   { import = "plugins.indent-blankline" },
   { import = "plugins.render-markdown" },
+  { import = "plugins.image" },
 
   -- LSP and language support
   { import = "plugins.lsp" },

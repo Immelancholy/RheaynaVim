@@ -205,6 +205,7 @@ inputs:
       tree-sitter
       pkgs.vscode-extensions.vadimcn.vscode-lldb
       python3Packages.pylatexenc
+      imagemagick
     ];
     # this `lazy = true` definition will transfer to specs in the contained DAL, if there is one.
     # This is because the definition of lazy in `config.specMods` checks `parentSpec.lazy or false`
@@ -255,6 +256,7 @@ inputs:
         data = ccc-nvim;
         lazy = false;
       }
+      image-nvim
       render-markdown-nvim
       lazygit-nvim
       jj-nvim
