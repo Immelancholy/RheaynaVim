@@ -195,6 +195,10 @@ inputs:
     config.nvim-lib.neovimPlugins.conform
   ];
 
+  config.specs.quickbuf = [
+    config.nvim-lib.neovimPlugins.quickbuf
+  ];
+
   config.specs.general = {
     # this would ensure any config included from nix in here will be ran after any provided by the `lze` spec
     # If we provided any from within either spec, anyway

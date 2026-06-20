@@ -30,6 +30,7 @@ return {
   -- Navigation
   { import = "plugins.harpoon" },
   { import = "plugins.flash" },
+  { import = "plugins.quickbuf" },
 
   -- File Nav
   { import = "plugins.oil" },

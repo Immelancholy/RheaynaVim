@@ -45,6 +45,10 @@
     url = "github:auscyber/conform.nvim";
     flake = false;
   };
+  inputs.plugins-quickbuf = {
+    url = "github:tjgao/quickbuf.nvim";
+    flake = false;
+  };
   inputs = {
     git-hooks.url = "github:cachix/git-hooks.nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
