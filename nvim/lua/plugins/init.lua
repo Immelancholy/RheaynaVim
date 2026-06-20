@@ -14,6 +14,7 @@ return {
   { import = "plugins.indent-blankline" },
   { import = "plugins.render-markdown" },
   { import = "plugins.image" },
+  { import = "plugins.todo-comments" },
 
   -- LSP and language support
   { import = "plugins.lsp" },

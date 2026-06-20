@@ -17,32 +17,53 @@ return {
           pick = nil,
           keys = {
             {
-              icon = " ",
+              icon = " ",
               key = "f",
               desc = "Find File",
               action = ":lua Snacks.dashboard.pick('files')",
             },
-            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
             {
-              icon = " ",
+              icon = " ",
+              key = "n",
+              desc = "New File",
+              action = ":ene | startinsert",
+            },
+            {
+              icon = " ",
+              key = "p",
+              desc = "Projects",
+              action = ":lua Snacks.dashboard.pick('projects')",
+            },
+            {
+              icon = " ",
               key = "g",
               desc = "Find Text",
               action = ":lua Snacks.dashboard.pick('live_grep')",
             },
             {
-              icon = " ",
+              icon = " ",
               key = "r",
               desc = "Recent Files",
               action = ":lua Snacks.dashboard.pick('oldfiles')",
             },
             {
-              icon = " ",
+              icon = " ",
               key = "o",
               desc = "Notes",
-              action = ":lua Snacks.dashboard.pick('files', {cwd = os.getenv('NOTES_PATH')})",
+              action = ":lua vim.cmd('Oil ' .. os.getenv('NOTES_PATH'))",
             },
-            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+            {
+              icon = " ",
+              key = "s",
+              desc = "Restore Session",
+              section = "session",
+            },
+            {
+              icon = " ",
+              key = "q",
+              desc = "Quit",
+              action = ":qa",
+            },
           },
           header = [[
 ⢰⡟⣡⡟⣱⣿⡿⠡⢛⣋⣥⣴⣌⢿⣿⣿⣿⣿⣷⣌⠻⢿⣿⣿⣿⣿⣿⣿
