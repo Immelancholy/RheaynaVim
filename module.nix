@@ -256,6 +256,7 @@ inputs:
         data = ccc-nvim;
         lazy = false;
       }
+      trouble-nvim
       todo-comments-nvim
       image-nvim
       render-markdown-nvim

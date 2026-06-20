@@ -22,6 +22,7 @@ return {
   { import = "plugins.conform" },
   { import = "plugins.lint" },
   { import = "plugins.ccc" },
+  { import = "plugins.trouble" },
 
   -- Completion
   { import = "plugins.completion" },
