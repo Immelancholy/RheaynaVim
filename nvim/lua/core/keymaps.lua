@@ -53,3 +53,10 @@ keymap("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
 
 -- Toggle text wrapping
 keymap({ "n", "v", "x" }, "<leader>W", "<cmd>set wrap!<CR>", { desc = "Toggle text wrapping", noremap = true })
+-- Toggle relative line number
+keymap(
+  { "n", "v", "x" },
+  "<leader>R",
+  "<cmd>set relativenumber!<CR>",
+  { desc = "Toggle text wrapping", noremap = true }
+)
