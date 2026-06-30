@@ -50,7 +50,7 @@ return {
               icon = " ",
               key = "o",
               desc = "Notes",
-              action = ":lua vim.cmd('Oil ' .. os.getenv('NOTES_PATH'))",
+              action = ":lua vim.cmd('cd ' .. os.getenv('NOTES_PATH')) vim.cmd('Oil ' .. os.getenv('NOTES_PATH'))",
             },
             {
               icon = " ",
