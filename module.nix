@@ -161,44 +161,6 @@ inputs:
     ];
   };
 
-  config.specs.conflict-marker = [
-    config.nvim-lib.neovimPlugins.conflict-marker
-  ];
-
-  config.specs.mole = [
-    config.nvim-lib.neovimPlugins.mole
-  ];
-
-  config.specs.atone = [
-    config.nvim-lib.neovimPlugins.atone
-  ];
-
-  config.specs.nvim-highlight-colors = [
-    config.nvim-lib.neovimPlugins.nvim-highlight-colors
-  ];
-
-  config.specs.vim-be-good = [
-    config.nvim-lib.neovimPlugins.vim-be-good
-  ];
-
-  config.specs.nvim-autopairs = [
-    config.nvim-lib.neovimPlugins.nvim-autopairs
-  ];
-
-  config.specs.arborist = [
-    {
-      data = config.nvim-lib.neovimPlugins.arborist;
-      lazy = false;
-    }
-  ];
-  config.specs.conform = [
-    config.nvim-lib.neovimPlugins.conform
-  ];
-
-  config.specs.quickbuf = [
-    config.nvim-lib.neovimPlugins.quickbuf
-  ];
-
   config.specs.general = {
     # this would ensure any config included from nix in here will be ran after any provided by the `lze` spec
     # If we provided any from within either spec, anyway
@@ -293,6 +255,23 @@ inputs:
       fidget-nvim
       nvim-lint
       obsidian-nvim
+    ];
+  };
+
+  config.specs.flake-plugins = {
+    data = [
+      {
+        data = config.nvim-lib.neovimPlugins.arborist;
+        lazy = false;
+      }
+      config.nvim-lib.neovimPlugins.conflict-marker
+      config.nvim-lib.neovimPlugins.mole
+      config.nvim-lib.neovimPlugins.atone
+      config.nvim-lib.neovimPlugins.nvim-highlight-colors
+      config.nvim-lib.neovimPlugins.vim-be-good
+      config.nvim-lib.neovimPlugins.nvim-autopairs
+      config.nvim-lib.neovimPlugins.conform
+      config.nvim-lib.neovimPlugins.quickbuf
     ];
   };
 
